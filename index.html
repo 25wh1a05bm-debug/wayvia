@@ -1537,55 +1537,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
           </div>
         </div>
 
-        <!-- PROBLEM STATEMENT Presentation Card (Replicating Slide 2 directly!) -->
-        <div class="scalloped-card" style="padding: 36px; margin-top: 24px;">
-          <!-- Paperclip -->
-          <svg class="paperclip-clip" viewBox="0 0 32 52" fill="none">
-            <path d="M10 12V38C10 42.4 13.6 46 18 46C22.4 46 26 42.4 26 38V10C26 5.6 22.4 2 18 2C13.6 2 10 5.6 10 10V38C10 40.2 11.8 42 14 42C16.2 42 18 40.2 18 38V12" stroke="#5AB3E8" stroke-width="3" stroke-linecap="round"/>
-          </svg>
-
-          <!-- Washi tape -->
-          <div class="washi-tape-corner"></div>
-
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; flex-wrap: wrap; gap: 16px;">
-            <div>
-              <h2 class="section-heading-serif" style="font-size: 2.4rem; margin-bottom: 4px;">PROBLEM STATEMENT</h2>
-              <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 700;">From the Team Vertex Research Synthesis</span>
-            </div>
-
-            <!-- Double Map Pins with Dashed Journey Route (From Slide 2) -->
-            <div class="journey-trail-badge">
-              <svg width="22" height="26" viewBox="0 0 24 30" fill="none">
-                <path d="M12 0C5.372 0 0 5.373 0 12c0 9 12 18 12 18s12-9 12-18c0-6.627-5.373-12-12-12z" fill="#1E40AF"/>
-                <circle cx="12" cy="11" r="4" fill="#FFFFFF"/>
-              </svg>
-              <div class="trail-line"></div>
-              <svg width="22" height="26" viewBox="0 0 24 30" fill="none">
-                <path d="M12 0C5.372 0 0 5.373 0 12c0 9 12 18 12 18s12-9 12-18c0-6.627-5.373-12-12-12z" fill="#1E40AF"/>
-                <circle cx="12" cy="11" r="4" fill="#FFFFFF"/>
-              </svg>
-            </div>
-          </div>
-
-          <ul style="list-style-type: none; display: flex; flex-direction: column; gap: 14px; font-size: 1.05rem; color: #D83A7D; line-height: 1.6;">
-            <li style="display: flex; align-items: flex-start; gap: 12px;">
-              <span style="color: var(--brand-pink); font-size: 1.4rem; line-height: 1.1;">•</span>
-              <span>In today’s digital world, location-based platforms help people discover nearby restaurants, hospitals, and other destinations. However, finding a location does not mean knowing whether it meets an individual’s specific needs.</span>
-            </li>
-            <li style="display: flex; align-items: flex-start; gap: 12px;">
-              <span style="color: var(--brand-pink); font-size: 1.4rem; line-height: 1.1;">•</span>
-              <span>People with mobility limitations and users with particular dietary or sensory preferences need additional information before deciding a place.</span>
-            </li>
-            <li style="display: flex; align-items: flex-start; gap: 12px;">
-              <span style="color: var(--brand-pink); font-size: 1.4rem; line-height: 1.1;">•</span>
-              <span>This information may be scattered across maps, business websites, customer reviews, photographs, and individual listings.</span>
-            </li>
-            <li style="display: flex; align-items: flex-start; gap: 12px;">
-              <span style="color: var(--brand-pink); font-size: 1.4rem; line-height: 1.1;">•</span>
-              <span>As a result, users may struggle to determine whether a destination offers the facilities and environment they require before travelling.</span>
-            </li>
-          </ul>
-        </div>
+        
 
         <!-- Team Footer Ribbon (Slide 1 Footer tribute) -->
         <div class="team-footer-ribbon">
@@ -2054,7 +2006,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 <script>
 // --- js/data.js ---
 /**
- * WAYVIA Location Intelligence Dataset
+ * WAYVIA Location Intelligence Dataset — India Edition (Hyderabad / Metro)
  * 
  * Simulated Google Places API (New) schema with deep accessibility extensions.
  * Follows the 3-state accessibility paradigm: 'verified', 'unknown', 'no' (doesn't match).
@@ -2092,7 +2044,7 @@ const CATEGORIES = [
   { id: 'all', name: 'All Places', icon: 'compass', count: 12 },
   { id: 'cafe', name: 'Cafés', icon: 'coffee', count: 3, description: 'Quiet coffee shops, bakeries & work-friendly spots' },
   { id: 'restaurant', name: 'Restaurants', icon: 'utensils', count: 3, description: 'Inclusive dining from casual eateries to fine dining' },
-  { id: 'hospital', name: 'Hospitals', icon: 'hospital', count: 1, description: 'Medical centers & clinics with full ADA compliance' },
+  { id: 'hospital', name: 'Hospitals', icon: 'hospital', count: 1, description: 'Medical centers & clinics with full accessibility compliance' },
   { id: 'hotel', name: 'Hotels', icon: 'bed', count: 1, description: 'Accessible lodging with roll-in showers & elevator access' },
   { id: 'shopping', name: 'Shopping', icon: 'shopping-bag', count: 1, description: 'Step-free retail centers with wide aisles' },
   { id: 'park', name: 'Parks', icon: 'trees', count: 1, description: 'Paved nature trails and sensory gardens' },
@@ -2104,20 +2056,20 @@ const PLACES_DATA = [
   {
     id: 'place-01',
     name: 'The Green Leaf Botanical Café',
-    tagline: 'Sunlit conservatory café serving organic plant-based fare',
+    tagline: 'Sunlit garden café serving organic vegetarian fare & specialty brews',
     categoryId: 'cafe',
     categoryName: 'Café',
     rating: 4.8,
-    reviewCount: 342,
-    priceLevel: '$$',
+    reviewCount: 428,
+    priceLevel: '₹₹',
     distanceKm: 0.8,
-    address: '412 Market Terrace, Suite 100, Downtown',
-    phone: '(555) 234-8901',
-    website: 'https://thegreenleaf.example.com',
-    openingHours: 'Open · Closes 7:00 PM',
-    coords: { lat: 37.7891, lng: -122.4014 },
+    address: 'Road No. 36, Jubilee Hills, Hyderabad, Telangana',
+    phone: '+91 98490 23489',
+    website: 'https://thegreenleaf-india.example.com',
+    openingHours: 'Open · Closes 10:30 PM',
+    coords: { lat: 17.4325, lng: 78.4072 },
     photo: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=80',
-    googlePlacesId: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
+    googlePlacesId: 'ChIJ5b8_tDeuEmsRUsoyG83frY4',
     googleData: {
       source: 'Google Places API (New)',
       attribution: 'Information from Google Maps',
@@ -2130,76 +2082,76 @@ const PLACES_DATA = [
         wheelchair_entrance: {
           status: 'verified',
           label: 'Wheelchair-accessible entrance',
-          note: 'Automatic sliding double doors, flush threshold with 0cm step, gentle 1:16 exterior ramp.'
+          note: 'Automatic sliding glass doors, flush zero-step entryway, gentle 1:16 gradient entrance ramp.'
         },
         wheelchair_restroom: {
           status: 'verified',
           label: 'Wheelchair-accessible restroom',
-          note: 'Single-occupancy unisex ADA restroom with inward/outward door swing, 90cm door clear width, dual grab bars.'
+          note: 'Single-occupancy unisex accessible restroom with inward/outward door swing, 92cm doorway width, sturdy dual grab bars.'
         },
         wheelchair_parking: {
           status: 'verified',
           label: 'Wheelchair-accessible parking',
-          note: '2 dedicated van-accessible stalls directly adjacent to ramped pathway (12 meters to entrance).'
+          note: '2 dedicated accessible parking stalls directly adjacent to ramped pathway (10 meters to main door).'
         },
         wheelchair_seating: {
           status: 'verified',
           label: 'Wheelchair-accessible seating',
-          note: 'Standard height solid wood tables (76cm height) with removable armless chairs.'
+          note: 'Standard height dining tables (76cm height) with removable armless wooden chairs.'
         },
         step_free_interior: {
           status: 'verified',
           label: 'Step-free interior pathways',
-          note: 'Continuous smooth polished concrete throughout ordering and seating areas.'
+          note: 'Continuous smooth polished vitrified flooring throughout dining and outdoor courtyard.'
         },
         accessible_elevator: {
           status: 'verified',
           label: 'Accessible elevator',
-          note: 'Single-level venue, no elevator needed.'
+          note: 'Ground floor venue, zero elevation changes.'
         }
       },
       sensory: {
         quiet_environment: {
           status: 'verified',
           label: 'Quiet / Low noise environment',
-          note: 'Acoustic ceiling baffles installed in 2024. Measured ambient sound level ~52 dB on weekdays.'
+          note: 'Acoustic ceiling baffles, soft ambient instrumental music, measured sound level ~52 dB on weekdays.'
         },
         soft_lighting: {
           status: 'verified',
           label: 'Natural / Soft warm lighting',
-          note: 'Abundant natural skylights with soft 2700K pendant fixtures. No fluorescent flicker.'
+          note: 'Abundant daylight through courtyard skylights with warm 2700K pendant fixtures.'
         },
         spacious_aisles: {
           status: 'verified',
           label: 'Spacious seating & wide aisles',
-          note: 'Main aisle width 135cm; turning radius exceeding 150cm diameter at all table nodes.'
+          note: 'Main aisles over 135cm wide; easy turning radius for power wheelchairs.'
         },
         low_crowd: {
           status: 'unknown',
           label: 'Low crowd density',
-          note: 'Peak hours on Saturday 10am-1pm may become moderately crowded. Weekday data unverified.'
+          note: 'Peak hours on Saturday and Sunday evenings can get busy. Weekday afternoons are calm.'
         }
       },
       dietary: {
         vegetarian: {
           status: 'verified',
           label: 'Vegetarian menu options',
-          note: '100% vegetarian menu with 16 chef specialties, clearly marked on menu and digital kiosk.'
+          note: '100% pure vegetarian kitchen with over 24 seasonal chef dishes.'
         },
         vegan: {
           status: 'verified',
           label: 'Vegan options',
-          note: 'Oat, almond, and soy milks at no upcharge; 9 fully vegan pastries and 6 lunch bowls.'
+          note: 'Oat and almond milk available; vegan sourdough platters and plant smoothies.'
         },
         gluten_free: {
           status: 'verified',
           label: 'Gluten-free options',
-          note: 'Dedicated gluten-free pastry case and certified GF sandwich bread.'
+          note: 'Gluten-free millet dosas, salads, and rice-based bakery items.'
         },
         allergy_aware: {
           status: 'unknown',
           label: 'Allergy-aware kitchen',
-          note: 'Nut allergens present on premises. Cross-contact procedures not independently audited.'
+          note: 'Nut allergens handled in dessert section. Cross-contamination protocols unverified.'
         }
       },
       parking_transit: {
@@ -2211,12 +2163,12 @@ const PLACES_DATA = [
         curbside_dropoff: {
           status: 'verified',
           label: 'Curbside drop-off zone',
-          note: 'Designated 10-minute loading cutout on Market Terrace directly in front.'
+          note: 'Designated passenger drop-off lane on Road No. 36 directly in front.'
         },
         near_transit: {
           status: 'verified',
           label: 'Near accessible transit stop',
-          note: 'Bus line 14 & 38 stop 60 meters away with tactile paving and curb ramps.'
+          note: 'Jubilee Hills Check Post Metro Station is 450m away with working street elevators.'
         }
       }
     },
@@ -2229,20 +2181,20 @@ const PLACES_DATA = [
     matchHighlights: [
       'Wheelchair-accessible entrance matches your required mobility profile',
       'Wheelchair-accessible restroom verified with grab bars and transfer space',
-      '100% vegetarian menu satisfies your required dietary requirement',
-      'Dedicated van-accessible parking bay matches preferred arrival preference',
+      '100% pure vegetarian kitchen satisfies your required dietary preference',
+      'Dedicated accessible parking bay matches preferred arrival preference',
       'Quiet acoustic ceiling panels match your preferred sensory setting'
     ],
     knowBeforeYouGo: {
       verified: [
         'Automatic sliding entrance with 0-step ramp',
-        'ADA-compliant single stall restroom with dual grab bars',
-        '2 dedicated van-accessible parking spaces',
-        'Extensive vegetarian & vegan kitchen',
+        'Single stall accessible restroom with dual grab bars',
+        '2 dedicated accessible parking spaces',
+        'Extensive pure vegetarian & vegan menu',
         'Measured ambient sound level ~52 dB'
       ],
       unknown: [
-        'Weekend peak crowd noise level not verified',
+        'Weekend evening peak crowd noise level not verified',
         'Nut allergy cross-contamination protocol not certified'
       ],
       doesntMatch: []
@@ -2250,19 +2202,19 @@ const PLACES_DATA = [
   },
   {
     id: 'place-02',
-    name: 'Bloom & Roast Coffee Lounge',
-    tagline: 'Artisanal micro-roastery with patio seating',
+    name: 'Bloom & Roast Artisan Coffee Lounge',
+    tagline: 'Specialty coffee roastery with shaded courtyard patio',
     categoryId: 'cafe',
     categoryName: 'Café',
     rating: 4.6,
-    reviewCount: 198,
-    priceLevel: '$$',
+    reviewCount: 310,
+    priceLevel: '₹₹',
     distanceKm: 1.4,
-    address: '88 Pine Street, Financial District',
-    phone: '(555) 345-6789',
-    website: 'https://bloomandroast.example.com',
-    openingHours: 'Open · Closes 6:00 PM',
-    coords: { lat: 37.7925, lng: -122.4042 },
+    address: 'Road No. 10, Banjara Hills, Hyderabad, Telangana',
+    phone: '+91 97010 34567',
+    website: 'https://bloomandroast-india.example.com',
+    openingHours: 'Open · Closes 11:00 PM',
+    coords: { lat: 17.4180, lng: 78.4350 },
     photo: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1000&q=80',
     googlePlacesId: 'ChIJ5T1_tDeuEmsRUsoyG83frA2',
     googleData: {
@@ -2277,66 +2229,66 @@ const PLACES_DATA = [
         wheelchair_entrance: {
           status: 'verified',
           label: 'Wheelchair-accessible entrance',
-          note: 'Wide double entry door. Manual push/pull door with 85cm clearance.'
+          note: 'Wide double entry glass doors. Manual push/pull door with 88cm clearance.'
         },
         wheelchair_restroom: {
           status: 'unknown',
           label: 'Wheelchair-accessible restroom',
-          note: 'Restroom reported on ground level, but exact door width and grab bar configuration unverified.'
+          note: 'Restroom reported on ground level, but exact doorway width and grab bar configuration unverified.'
         },
         wheelchair_parking: {
           status: 'no',
           label: 'Wheelchair-accessible parking',
-          note: 'No dedicated customer parking. Metered street parking only, frequently occupied.'
+          note: 'Valet parking only; no self-drive dedicated accessible parking bay.'
         },
         wheelchair_seating: {
           status: 'verified',
           label: 'Wheelchair-accessible seating',
-          note: 'Low banquettes and standard square tables with movable wooden chairs.'
+          note: 'Low courtyard tables with movable chairs.'
         },
         step_free_interior: {
           status: 'verified',
           label: 'Step-free interior pathways',
-          note: 'Flat hardwood flooring throughout the main café area.'
+          note: 'Flat stone flooring throughout main café.'
         },
         accessible_elevator: {
           status: 'verified',
           label: 'Accessible elevator',
-          note: 'Ground level venue.'
+          note: 'Ground floor venue.'
         }
       },
       sensory: {
         quiet_environment: {
           status: 'no',
           label: 'Quiet / Low noise environment',
-          note: 'Espresso machine grinding and high ceiling echo create ~72 dB ambient sound during peak hours.'
+          note: 'Grinders and high customer volume create ~72 dB ambient sound during evening hours.'
         },
         soft_lighting: {
           status: 'verified',
           label: 'Natural / Soft warm lighting',
-          note: 'Floor-to-ceiling street windows providing warm daylight.'
+          note: 'Courtyard tree canopy provides diffused natural daylight.'
         },
         spacious_aisles: {
           status: 'unknown',
           label: 'Spacious seating & wide aisles',
-          note: 'Aisle clearances vary during busy times when outdoor chairs are rearranged.'
+          note: 'Aisle clearances vary when outdoor patio chairs are moved by patrons.'
         },
         low_crowd: {
           status: 'no',
           label: 'Low crowd density',
-          note: 'High commuter rush between 8am-10am.'
+          note: 'High college & IT crowd rush between 5pm-8pm.'
         }
       },
       dietary: {
         vegetarian: {
           status: 'verified',
           label: 'Vegetarian menu options',
-          note: 'Avocado toast, overnight oats, and chia puddings available.'
+          note: 'Avocado toast, paneer brioche, and vegetarian croissants available.'
         },
         vegan: {
           status: 'verified',
           label: 'Vegan options',
-          note: '4 plant milks available; vegan banana bread.'
+          note: 'Soy and almond milk alternatives.'
         },
         gluten_free: {
           status: 'unknown',
@@ -2353,17 +2305,17 @@ const PLACES_DATA = [
         dedicated_accessible_parking: {
           status: 'no',
           label: 'Dedicated accessible parking bays',
-          note: 'No off-street parking available.'
+          note: 'Street valet only.'
         },
         curbside_dropoff: {
           status: 'verified',
           label: 'Curbside drop-off zone',
-          note: 'Passenger yellow loading curb 20m from front entrance.'
+          note: 'Designated drop-off cutout outside entrance.'
         },
         near_transit: {
           status: 'verified',
           label: 'Near accessible transit stop',
-          note: 'Montgomery St Transit Station within 250m with street elevator.'
+          note: 'Banjara Hills bus stop 150m away.'
         }
       }
     },
@@ -2375,43 +2327,40 @@ const PLACES_DATA = [
     },
     matchHighlights: [
       'Wheelchair-accessible entrance matches your required mobility profile',
-      'Vegetarian morning snacks match your required dietary profile',
-      'Near accessible transit elevator station (Montgomery St)',
+      'Vegetarian snacks match your required dietary profile',
       'Restroom accessibility status is UNKNOWN — verify before arrival'
     ],
     knowBeforeYouGo: {
       verified: [
-        'Manual wide entrance door (85cm clearance)',
+        'Manual wide entrance door (88cm clearance)',
         'Movable seating at standard height tables',
-        'Vegetarian options available',
-        'Accessible transit station within 250m'
+        'Vegetarian options available'
       ],
       unknown: [
         'Restroom door width & grab bar presence unverified',
-        'Aisle turning radius during peak periods unverified',
         'Gluten-free cross-contamination status unknown'
       ],
       doesntMatch: [
-        'No dedicated accessible parking lot on premises',
-        'Loud ambient noise level (~72 dB) does not match quiet preference'
+        'No dedicated accessible self-parking bay',
+        'Loud evening noise (~72 dB) does not match quiet preference'
       ]
     }
   },
   {
     id: 'place-03',
-    name: 'Heritage Step-Down Bistro',
-    tagline: 'Historic brick eatery specializing in farm-to-table cuisine',
+    name: 'Heritage Step-Down Thali & Bistro',
+    tagline: 'Historic traditional restaurant serving authentic regional thalis',
     categoryId: 'restaurant',
     categoryName: 'Restaurant',
     rating: 4.7,
-    reviewCount: 412,
-    priceLevel: '$$$',
+    reviewCount: 580,
+    priceLevel: '₹₹',
     distanceKm: 1.5,
-    address: '215 Historic Alley, North Beach',
-    phone: '(555) 456-7890',
-    website: 'https://heritagebistro.example.com',
-    openingHours: 'Open · Closes 10:00 PM',
-    coords: { lat: 37.7985, lng: -122.4082 },
+    address: 'Near Old Airport Road, Begumpet, Hyderabad, Telangana',
+    phone: '+91 94400 45678',
+    website: 'https://heritagethali-india.example.com',
+    openingHours: 'Open · Closes 10:30 PM',
+    coords: { lat: 17.4440, lng: 78.4680 },
     photo: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80',
     googlePlacesId: 'ChIJ3X1_tDeuEmsRUsoyG83frC3',
     googleData: {
@@ -2426,27 +2375,27 @@ const PLACES_DATA = [
         wheelchair_entrance: {
           status: 'no',
           label: 'Wheelchair-accessible entrance',
-          note: 'Historic brick building has 4 exterior stone steps (each 18cm) with handrail but NO ramp or lift.'
+          note: 'Historic heritage building has 4 steep stone entrance steps (each 20cm) with NO ramp or lift.'
         },
         wheelchair_restroom: {
           status: 'no',
           label: 'Wheelchair-accessible restroom',
-          note: 'Restrooms located down narrow winding basement stairway (14 steps).'
+          note: 'Restrooms located down a narrow staircase (12 steps).'
         },
         wheelchair_parking: {
           status: 'no',
           label: 'Wheelchair-accessible parking',
-          note: 'No parking lot. Cobblestone pedestrian alleyway.'
+          note: 'Street parking only.'
         },
         wheelchair_seating: {
           status: 'verified',
           label: 'Wheelchair-accessible seating',
-          note: 'If entered, interior tables have standard height and removable chairs.'
+          note: 'Interior has traditional wooden tables with removable chairs.'
         },
         step_free_interior: {
           status: 'no',
           label: 'Step-free interior pathways',
-          note: 'Sunken dining section has 2 interior steps.'
+          note: 'Sunken courtyard dining section has 2 steps.'
         },
         accessible_elevator: {
           status: 'no',
@@ -2458,61 +2407,61 @@ const PLACES_DATA = [
         quiet_environment: {
           status: 'verified',
           label: 'Quiet / Low noise environment',
-          note: 'Intimate candlelit setting, soft jazz music, fabric drapery dampens sound (~50 dB).'
+          note: 'Traditional sitar music, peaceful family dining (~50 dB).'
         },
         soft_lighting: {
           status: 'verified',
           label: 'Natural / Soft warm lighting',
-          note: 'Dim ambient candlelight and warm wall sconces.'
+          note: 'Warm brass lamps and soft courtyard lighting.'
         },
         spacious_aisles: {
           status: 'no',
           label: 'Spacious seating & wide aisles',
-          note: 'Narrow historic layout with closely spaced vintage bistro tables (~65cm).'
+          note: 'Historic layout with closely spaced tables (~70cm).'
         },
         low_crowd: {
           status: 'verified',
           label: 'Low crowd density',
-          note: 'Strict reservation-only policy limits occupancy.'
+          note: 'Reservation-based dining.'
         }
       },
       dietary: {
         vegetarian: {
           status: 'verified',
           label: 'Vegetarian menu options',
-          note: 'Award-winning seasonal vegetable tasting menu with heirloom ingredients.'
+          note: '100% pure vegetarian royal thali with 28 specialties.'
         },
         vegan: {
           status: 'verified',
           label: 'Vegan options',
-          note: 'Full 5-course vegan pairing menu available on request.'
+          note: 'Pure plant-based thali option without ghee available on request.'
         },
         gluten_free: {
           status: 'verified',
           label: 'Gluten-free options',
-          note: 'All sauces thickened naturally; gluten-free tasting menu.'
+          note: 'Rice and jowar roti options available.'
         },
         allergy_aware: {
           status: 'verified',
           label: 'Allergy-aware kitchen',
-          note: 'Chef personally reviews allergen disclosures prior to table seating.'
+          note: 'Strict pure-veg kitchen with clear allergen tags.'
         }
       },
       parking_transit: {
         dedicated_accessible_parking: {
           status: 'no',
           label: 'Dedicated accessible parking bays',
-          note: 'Pedestrian alley with bollards preventing vehicle access.'
+          note: 'No dedicated disabled parking.'
         },
         curbside_dropoff: {
           status: 'no',
           label: 'Curbside drop-off zone',
-          note: 'Closest vehicle drop-off is 80 meters away on Columbus Ave.'
+          note: 'Roadside drop-off only.'
         },
         near_transit: {
           status: 'unknown',
           label: 'Near accessible transit stop',
-          note: 'Bus line 30 stops nearby, but sidewalk is cobblestone.'
+          note: 'Begumpet Railway/Metro station 600m away.'
         }
       }
     },
@@ -2523,43 +2472,43 @@ const PLACES_DATA = [
       userReportedCount: 2
     },
     matchHighlights: [
-      'Exquisite vegetarian & vegan dining matches your dietary preferences',
-      'Quiet intimate atmosphere matches your preferred noise level',
+      'Exquisite 100% pure vegetarian thali matches your dietary requirement',
+      'Quiet serene atmosphere matches your preferred noise level',
       'CRITICAL MISMATCH: 4 stone entry steps with no ramp violate required wheelchair access',
-      'Restrooms located in basement via narrow stairway'
+      'Restrooms located downstairs via narrow staircase'
     ],
     knowBeforeYouGo: {
       verified: [
-        'Extensive 5-course vegetarian and vegan tasting menus',
-        'Quiet romantic atmosphere (~50 dB)',
-        'Candlelit warm lighting with no glare'
+        '100% pure vegetarian royal thali',
+        'Quiet cultural atmosphere (~50 dB)',
+        'Traditional brass warm lighting'
       ],
       unknown: [
-        'Cobblestone street transit ramp condition unverified'
+        'Transit wheelchair ramp availability unverified'
       ],
       doesntMatch: [
         '✕ 4 exterior stone steps at entrance (No ramp or lift)',
-        '✕ Restroom located in basement via 14 steps',
-        '✕ No vehicle parking or drop-off zone within 80 meters',
-        '✕ Narrow interior aisles (~65cm width)'
+        '✕ Restroom located downstairs via 12 steps',
+        '✕ No dedicated accessible parking on premises',
+        '✕ Narrow interior aisles (~70cm width)'
       ]
     }
   },
   {
     id: 'place-04',
-    name: 'St. Jude Central Wellness Pavilion',
-    tagline: 'Comprehensive outpatient wellness center and clinic',
+    name: 'Apollo Health City & Wellness Campus',
+    tagline: 'Multi-specialty healthcare and outpatient wellness campus',
     categoryId: 'hospital',
     categoryName: 'Hospital / Clinic',
     rating: 4.9,
-    reviewCount: 620,
-    priceLevel: 'Free / Insured',
+    reviewCount: 1240,
+    priceLevel: 'Insurance / Cash',
     distanceKm: 2.1,
-    address: '900 Medical Center Way, Building B',
-    phone: '(555) 901-2345',
-    website: 'https://stjude-wellness.example.com',
+    address: 'Film Nagar, Jubilee Hills, Hyderabad, Telangana',
+    phone: '+91 040 2360 7777',
+    website: 'https://apollo-jubileehills.example.com',
     openingHours: 'Open 24 Hours · Every day',
-    coords: { lat: 37.7842, lng: -122.4150 },
+    coords: { lat: 17.4185, lng: 78.4110 },
     photo: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1000&q=80',
     googlePlacesId: 'ChIJ4X1_tDeuEmsRUsoyG83frD4',
     googleData: {
@@ -2574,93 +2523,93 @@ const PLACES_DATA = [
         wheelchair_entrance: {
           status: 'verified',
           label: 'Wheelchair-accessible entrance',
-          note: 'Power-assisted dual revolving and sliding sliding entrance doors, 0cm threshold.'
+          note: 'Power-assisted automatic sliding double glass doors, flush threshold with 0cm step.'
         },
         wheelchair_restroom: {
           status: 'verified',
           label: 'Wheelchair-accessible restroom',
-          note: 'Full hospital-grade adult changing table, power door openers, dual grab bars, emergency pull cords.'
+          note: 'Hospital-grade accessible restrooms with wide doors, dual grab bars, emergency alarm pull cords.'
         },
         wheelchair_parking: {
           status: 'verified',
           label: 'Wheelchair-accessible parking',
-          note: '14 dedicated van-accessible spaces in underground covered garage with direct elevator to lobby.'
+          note: '16 dedicated van-accessible spots in front parking lot and basement garage.'
         },
         wheelchair_seating: {
           status: 'verified',
           label: 'Wheelchair-accessible seating',
-          note: 'Adjustable height waiting room chairs, dedicated wheelchair parking alcoves with charging outlets.'
+          note: 'Dedicated wheelchair bays in waiting lounges with charging ports.'
         },
         step_free_interior: {
           status: 'verified',
           label: 'Step-free interior pathways',
-          note: '100% step-free throughout all wings with antimicrobial seamless non-slip flooring.'
+          note: '100% step-free throughout all blocks with medical non-slip flooring.'
         },
         accessible_elevator: {
           status: 'verified',
           label: 'Accessible elevator',
-          note: 'Oversized gurney elevators with tactile Braille, chime alerts, and low buttons.'
+          note: 'Large hospital stretcher elevators with voice chimes and Braille buttons.'
         }
       },
       sensory: {
         quiet_environment: {
           status: 'verified',
           label: 'Quiet / Low noise environment',
-          note: 'Acoustic design suppresses noise; designated low-sensory waiting suites.'
+          note: 'Acoustically dampening ceilings; dedicated quiet waiting lounges.'
         },
         soft_lighting: {
           status: 'verified',
           label: 'Natural / Soft warm lighting',
-          note: 'Circadian rhythm smart LED lighting with zero glare.'
+          note: 'Indirect soft LED lighting with zero glare.'
         },
         spacious_aisles: {
           status: 'verified',
           label: 'Spacious seating & wide aisles',
-          note: 'Corridors are 2.4 meters wide throughout.'
+          note: 'Corridors are 2.5 meters wide throughout.'
         },
         low_crowd: {
           status: 'verified',
           label: 'Low crowd density',
-          note: 'Staggered digital check-in prevents waiting room congestion.'
+          note: 'Digital appointment scheduling minimizes waiting room crowding.'
         }
       },
       dietary: {
         vegetarian: {
           status: 'verified',
           label: 'Vegetarian cafeteria options',
-          note: 'Wholesome organic cafeteria with clearly labeled vegetarian and plant-based meals.'
+          note: 'Hygienic multi-cuisine vegetarian cafeteria with nutritious wholesome food.'
         },
         vegan: {
           status: 'verified',
           label: 'Vegan options',
-          note: 'Certified vegan hot entrees and salad bar.'
+          note: 'Fresh salads, juices, and plant-based meals.'
         },
         gluten_free: {
           status: 'verified',
           label: 'Gluten-free options',
-          note: 'Clinical dietary kitchen with zero cross-contamination protocols.'
+          note: 'Clinical kitchen with gluten-free meal prep.'
         },
         allergy_aware: {
           status: 'verified',
           label: 'Allergy-aware kitchen',
-          note: 'Full medical allergen disclosure.'
+          note: 'Strict clinical allergen safety standards.'
         }
       },
       parking_transit: {
         dedicated_accessible_parking: {
           status: 'verified',
           label: 'Dedicated accessible parking bays',
-          note: '14 van-accessible spots with complimentary parking validation for accessible placard holders.'
+          note: '16 reserved spaces with free wheelchair assistance.'
         },
         curbside_dropoff: {
           status: 'verified',
           label: 'Curbside drop-off zone',
-          note: 'Covered porte-cochère drop-off zone with wheelchair concierge staff.'
+          note: 'Covered emergency and outpatient porch drop-off with wheelchair assistance staff.'
         },
         near_transit: {
           status: 'verified',
           label: 'Near accessible transit stop',
-          note: 'Direct sheltered bus and light rail station outside Main Entrance.'
+          note: 'Direct bus and auto stand at hospital entrance.'
         }
       }
     },
@@ -2671,19 +2620,17 @@ const PLACES_DATA = [
       userReportedCount: 0
     },
     matchHighlights: [
-      '100% ADA verified across all mobility categories',
-      'Power-assisted entrance doors and adult changing table in restroom',
-      '14 van-accessible garage parking spots with elevator access',
-      'Porte-cochère covered drop-off with wheelchair assistance',
-      'Designated low-sensory calming waiting rooms'
+      '100% verified accessibility across all mobility parameters',
+      'Automatic power entrance doors and hospital-grade accessible restrooms',
+      '16 dedicated accessible parking bays with wheelchair assistance',
+      'Covered drop-off porch with 24/7 patient support staff'
     ],
     knowBeforeYouGo: {
       verified: [
         'Zero-barrier step-free campus with power sliding doors',
-        'Hospital-grade accessible restrooms with adult changing tables',
-        '14 van-accessible parking spots with valet option',
-        'Wide 2.4m corridors and elevators with Braille/chimes',
-        'Sensory-friendly waiting rooms available upon request'
+        'Hospital-grade accessible restrooms with grab bars and emergency alarms',
+        '16 dedicated accessible parking spots',
+        'Wide 2.5m corridors and elevators with Braille & voice announcements'
       ],
       unknown: [],
       doesntMatch: []
@@ -2692,18 +2639,18 @@ const PLACES_DATA = [
   {
     id: 'place-05',
     name: 'Serenity Terrace Garden Restaurant',
-    tagline: 'Lush indoor-outdoor dining serving Mediterranean vegetarian cuisine',
+    tagline: 'Lush open-air terrace serving North & South Indian vegetarian delights',
     categoryId: 'restaurant',
     categoryName: 'Restaurant',
     rating: 4.7,
-    reviewCount: 284,
-    priceLevel: '$$$',
+    reviewCount: 490,
+    priceLevel: '₹₹₹',
     distanceKm: 2.4,
-    address: '520 Garden Court, Civic Center',
-    phone: '(555) 567-8901',
-    website: 'https://serenityterrace.example.com',
-    openingHours: 'Open · Closes 9:30 PM',
-    coords: { lat: 37.7810, lng: -122.4180 },
+    address: 'Financial District, Gachibowli, Hyderabad, Telangana',
+    phone: '+91 99890 56789',
+    website: 'https://serenityterrace-india.example.com',
+    openingHours: 'Open · Closes 11:30 PM',
+    coords: { lat: 17.4370, lng: 78.3610 },
     photo: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80',
     googlePlacesId: 'ChIJ5X1_tDeuEmsRUsoyG83frE5',
     googleData: {
@@ -2723,39 +2670,39 @@ const PLACES_DATA = [
         wheelchair_restroom: {
           status: 'unknown',
           label: 'Wheelchair-accessible restroom',
-          note: 'Restrooms located on main floor. Door width measured 82cm; grab bar certification in progress.'
+          note: 'Restrooms located on main floor. Door width 82cm; grab bar certification in progress.'
         },
         wheelchair_parking: {
           status: 'verified',
           label: 'Wheelchair-accessible parking',
-          note: 'Valet parking with dedicated ADA parking bays directly in courtyard.'
+          note: 'Valet parking with dedicated accessible parking spots in front courtyard.'
         },
         wheelchair_seating: {
           status: 'verified',
           label: 'Wheelchair-accessible seating',
-          note: 'Spacious terrace with moveable wrought-iron garden chairs and sturdy granite tables.'
+          note: 'Spacious terrace with moveable chairs and solid granite dining tables.'
         },
         step_free_interior: {
           status: 'verified',
           label: 'Step-free interior pathways',
-          note: 'Gentle 1:20 integrated garden ramps connect indoor salon and outdoor terrace.'
+          note: 'Gentle garden ramps connect indoor salon and outdoor terrace.'
         },
         accessible_elevator: {
           status: 'verified',
           label: 'Accessible elevator',
-          note: 'Ramp connected ground floor venue.'
+          note: 'Ground floor venue with ramp access.'
         }
       },
       sensory: {
         quiet_environment: {
           status: 'verified',
           label: 'Quiet / Low noise environment',
-          note: 'Soft water fountain provides natural white noise masking; ~54 dB ambient level.'
+          note: 'Outdoor water fountain provides natural sound masking (~54 dB).'
         },
         soft_lighting: {
           status: 'verified',
           label: 'Natural / Soft warm lighting',
-          note: 'Overhead pergola with climbing wisteria, filtered natural sunlight and warm fairy lights.'
+          note: 'Warm fairy lights and soft garden lanterns.'
         },
         spacious_aisles: {
           status: 'verified',
@@ -2765,29 +2712,29 @@ const PLACES_DATA = [
         low_crowd: {
           status: 'unknown',
           label: 'Low crowd density',
-          note: 'Weekend dinners are bustling; lunch hours are peaceful.'
+          note: 'Weekend dinners are popular; weekday lunches are serene.'
         }
       },
       dietary: {
         vegetarian: {
           status: 'verified',
           label: 'Vegetarian menu options',
-          note: 'Mediterranean meze, house-made falafel, truffle hummus, and wood-fired flatbreads.'
+          note: 'Extensive gourmet vegetarian menu: paneer delicacies, dal makhani, wood-fired tandoor specialties.'
         },
         vegan: {
           status: 'verified',
           label: 'Vegan options',
-          note: 'Over 60% of menu items are naturally vegan or easily modified.'
+          note: 'Over 15 plant-based dishes clearly marked.'
         },
         gluten_free: {
           status: 'verified',
           label: 'Gluten-free options',
-          note: 'Gluten-free flatbreads baked in dedicated separate oven.'
+          note: 'Rice, biryanis, and millet rotis.'
         },
         allergy_aware: {
           status: 'verified',
           label: 'Allergy-aware kitchen',
-          note: 'Certified allergy allergen management program.'
+          note: 'Careful allergen management.'
         }
       },
       parking_transit: {
@@ -2799,12 +2746,12 @@ const PLACES_DATA = [
         curbside_dropoff: {
           status: 'verified',
           label: 'Curbside drop-off zone',
-          note: 'Circular courtyard driveway allows barrier-free drop-off.'
+          note: 'Circular driveway allows barrier-free drop-off.'
         },
         near_transit: {
           status: 'verified',
           label: 'Near accessible transit stop',
-          note: 'Civic Center station 400m away with elevator.'
+          note: 'Wipro Circle bus stop 300m away.'
         }
       }
     },
@@ -2816,40 +2763,40 @@ const PLACES_DATA = [
     },
     matchHighlights: [
       'Automatic sensor glass entrance with flush threshold',
-      'Lush peaceful terrace with natural acoustic water fountain (~54 dB)',
-      'Rich Mediterranean vegetarian and vegan cuisine',
-      'Valet parking with 3 dedicated accessible courtyard spaces',
+      'Lush peaceful terrace with natural water fountain (~54 dB)',
+      'Rich Indian vegetarian and vegan cuisine',
+      'Valet parking with dedicated accessible spaces',
       'Restroom grab bar certification currently UNKNOWN'
     ],
     knowBeforeYouGo: {
       verified: [
         'Automatic sliding entrance with level access',
         'Gentle garden ramps connect terrace and dining hall',
-        'Outdoor terrace noise level is exceptionally gentle (~54 dB)',
-        'Extensive vegetarian menu with separate gluten-free flatbread oven'
+        'Outdoor terrace noise level is gentle (~54 dB)',
+        'Extensive vegetarian menu with gluten-free millet options'
       ],
       unknown: [
-        'Restroom ADA grab bar placement pending re-verification',
-        'Peak Saturday evening crowd volume unmeasured'
+        'Restroom grab bar placement pending re-verification',
+        'Peak Saturday dinner crowd volume unmeasured'
       ],
       doesntMatch: []
     }
   },
   {
     id: 'place-06',
-    name: 'The Grand Meridian Hotel & Suites',
-    tagline: 'Modern luxury hospitality with certified universal accessibility',
+    name: 'The Grand Meridian Luxury Hotel & Suites',
+    tagline: 'Modern 5-star hospitality with universal accessibility & fine dining',
     categoryId: 'hotel',
     categoryName: 'Hotel',
     rating: 4.8,
-    reviewCount: 512,
-    priceLevel: '$$$$',
+    reviewCount: 760,
+    priceLevel: '₹₹₹₹',
     distanceKm: 3.2,
-    address: '770 Skyline Boulevard, Westside',
-    phone: '(555) 678-9012',
-    website: 'https://grandmeridian.example.com',
+    address: 'HITEC City, Madhapur, Hyderabad, Telangana',
+    phone: '+91 040 6767 8900',
+    website: 'https://grandmeridian-india.example.com',
     openingHours: 'Open 24 Hours',
-    coords: { lat: 37.7750, lng: -122.4250 },
+    coords: { lat: 17.4475, lng: 78.3760 },
     photo: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=80',
     googlePlacesId: 'ChIJ6X1_tDeuEmsRUsoyG83frF6',
     googleData: {
@@ -2869,27 +2816,27 @@ const PLACES_DATA = [
         wheelchair_restroom: {
           status: 'verified',
           label: 'Wheelchair-accessible restroom',
-          note: 'Public lobby and guest room ADA suites have roll-in showers, fold-down bench, and dual grab bars.'
+          note: 'Lobby and ADA guest rooms have roll-in showers, fold-down seat, and dual grab bars.'
         },
         wheelchair_parking: {
           status: 'verified',
           label: 'Wheelchair-accessible parking',
-          note: 'Covered valet parking garage with 8 reserved van-accessible spaces.'
+          note: 'Covered basement valet parking garage with 8 reserved accessible spaces.'
         },
         wheelchair_seating: {
           status: 'verified',
           label: 'Wheelchair-accessible seating',
-          note: 'Lowered check-in reception desk (76cm) and accessible restaurant dining spaces.'
+          note: 'Lowered check-in reception counter (76cm) and accessible restaurant tables.'
         },
         step_free_interior: {
           status: 'verified',
           label: 'Step-free interior pathways',
-          note: 'Seamless marble and short-pile carpet with zero transitions.'
+          note: 'Seamless Italian marble and short-pile carpet with zero threshold transitions.'
         },
         accessible_elevator: {
           status: 'verified',
           label: 'Accessible elevator',
-          note: 'High-speed smart elevators with voice announcements and lower keypad.'
+          note: 'Voice-assisted smart elevators with low tactile Braille keypad.'
         }
       },
       sensory: {
@@ -2901,7 +2848,7 @@ const PLACES_DATA = [
         soft_lighting: {
           status: 'verified',
           label: 'Natural / Soft warm lighting',
-          note: 'Warm dimmable lighting throughout public areas.'
+          note: 'Warm dimmable lighting throughout lobby and dining areas.'
         },
         spacious_aisles: {
           status: 'verified',
@@ -2911,24 +2858,24 @@ const PLACES_DATA = [
         low_crowd: {
           status: 'verified',
           label: 'Low crowd density',
-          note: 'Expansive multi-story lobby prevents bottlenecking.'
+          note: 'Expansive multi-story atrium prevents bottlenecking.'
         }
       },
       dietary: {
         vegetarian: {
           status: 'verified',
           label: 'Vegetarian dining options',
-          note: '24-hour room service and signature restaurant feature comprehensive vegetarian menus.'
+          note: '24-hour in-room dining and multi-cuisine restaurants with pure vegetarian kitchen sections.'
         },
         vegan: {
           status: 'verified',
           label: 'Vegan options',
-          note: 'Dedicated vegan tasting menus.'
+          note: 'Dedicated vegan menus.'
         },
         gluten_free: {
           status: 'verified',
           label: 'Gluten-free options',
-          note: 'Kitchen certified by Celiac Foundation.'
+          note: 'Kitchen certified for gluten-free preparation.'
         },
         allergy_aware: {
           status: 'verified',
@@ -2940,17 +2887,17 @@ const PLACES_DATA = [
         dedicated_accessible_parking: {
           status: 'verified',
           label: 'Dedicated accessible parking bays',
-          note: '8 reserved garage stalls with 2.8m van clearance.'
+          note: '8 reserved garage stalls with direct elevator to lobby.'
         },
         curbside_dropoff: {
           status: 'verified',
           label: 'Curbside drop-off zone',
-          note: 'Level covered driveway with 24/7 bellhop assistance.'
+          note: 'Level covered porch with 24/7 bellhop assistance.'
         },
         near_transit: {
           status: 'verified',
           label: 'Near accessible transit stop',
-          note: 'Direct hotel shuttle to accessible transit hubs.'
+          note: 'HITEC City Metro Station 500m away with elevator.'
         }
       }
     },
@@ -2961,39 +2908,39 @@ const PLACES_DATA = [
       userReportedCount: 0
     },
     matchHighlights: [
-      'Comprehensive universal design with roll-in showers in ADA suites',
-      'Lowered check-in desk and power touchless doors',
-      'Certified celiac gluten-free and extensive vegetarian cuisine',
-      'Covered valet garage with 8 van-accessible stalls'
+      'Comprehensive universal design with roll-in showers in accessible suites',
+      'Lowered check-in desk and touchless sensor doors',
+      'Extensive pure vegetarian dining and 24/7 room service',
+      'Covered parking garage with 8 reserved stalls'
     ],
     knowBeforeYouGo: {
       verified: [
         'Touchless automatic sliding entrance',
-        'Public & private roll-in restrooms with dual grab bars',
+        'Public & suite roll-in restrooms with dual grab bars',
         'Lowered check-in desk at 76cm height',
-        'Triple-pane soundproofing in guest rooms & quiet lounges'
+        'Triple-pane soundproofing in rooms & lounges'
       ],
       unknown: [
-        'Outdoor pool ADA lift requires 15-minute advance notice'
+        'Outdoor pool accessibility lift requires 15-minute advance notice'
       ],
       doesntMatch: []
     }
   },
   {
     id: 'place-07',
-    name: 'Metro Central Public Library',
-    tagline: 'Architectural public resource center with adaptive technology labs',
+    name: 'State Central Public Library & Resource Center',
+    tagline: 'Historic public library with modern digital & Braille adaptive media lab',
     categoryId: 'public_service',
     categoryName: 'Public Service',
-    rating: 4.9,
-    reviewCount: 890,
+    rating: 4.8,
+    reviewCount: 920,
     priceLevel: 'Free',
     distanceKm: 1.1,
-    address: '100 Library Square, Civic Center',
-    phone: '(555) 789-0123',
-    website: 'https://metro-library.example.gov',
+    address: 'Near Assembly Metro, Public Gardens, Hyderabad, Telangana',
+    phone: '+91 040 2460 0123',
+    website: 'https://state-library-telangana.example.gov',
     openingHours: 'Open · Closes 8:00 PM',
-    coords: { lat: 37.7795, lng: -122.4162 },
+    coords: { lat: 17.3970, lng: 78.4710 },
     photo: 'https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1000&q=80',
     googlePlacesId: 'ChIJ7X1_tDeuEmsRUsoyG83frG7',
     googleData: {
@@ -3008,44 +2955,44 @@ const PLACES_DATA = [
         wheelchair_entrance: {
           status: 'verified',
           label: 'Wheelchair-accessible entrance',
-          note: 'Main entrance has automatic sliding doors and heated ramp system for all seasons.'
+          note: 'Main entrance has automatic sliding doors and a newly constructed gentle ramp.'
         },
         wheelchair_restroom: {
           status: 'verified',
           label: 'Wheelchair-accessible restroom',
-          note: 'Wheelchair-accessible single-stall and multi-stall restrooms on all 5 floors.'
+          note: 'Wheelchair-accessible restrooms on ground and 1st floor.'
         },
         wheelchair_parking: {
           status: 'verified',
           label: 'Wheelchair-accessible parking',
-          note: 'Civic underground garage has 10 ADA spots with direct elevator into library atrium.'
+          note: 'Designated accessible parking spaces inside gated campus.'
         },
         wheelchair_seating: {
           status: 'verified',
           label: 'Wheelchair-accessible seating',
-          note: 'Dozens of motorized height-adjustable desks with wheelchair clearance.'
+          note: 'Motorized height-adjustable computer desks in the Braille & accessibility lab.'
         },
         step_free_interior: {
           status: 'verified',
           label: 'Step-free interior pathways',
-          note: 'Wide elevator-connected step-free floors throughout all book stacks.'
+          note: 'Elevator-connected step-free floors throughout main reading rooms.'
         },
         accessible_elevator: {
           status: 'verified',
           label: 'Accessible elevator',
-          note: 'Glass elevators with Braille, voice synthesizers, and dual door openings.'
+          note: 'Spacious elevator with Braille buttons and voice floor announcements.'
         }
       },
       sensory: {
         quiet_environment: {
           status: 'verified',
           label: 'Quiet / Low noise environment',
-          note: 'Dedicated Silent Reading Rooms on 4th & 5th floors with strict acoustic controls.'
+          note: 'Strict silence enforced in study halls (< 42 dB ambient level).'
         },
         soft_lighting: {
           status: 'verified',
           label: 'Natural / Soft warm lighting',
-          note: 'Massive central atrium skylight and adjustable task lamps.'
+          note: 'Large arched heritage windows providing abundant natural light.'
         },
         spacious_aisles: {
           status: 'verified',
@@ -3055,46 +3002,46 @@ const PLACES_DATA = [
         low_crowd: {
           status: 'verified',
           label: 'Low crowd density',
-          note: 'Sprawling 120,000 sq ft facility ensures private study spaces are always available.'
+          note: 'Spacious reading halls.'
         }
       },
       dietary: {
         vegetarian: {
           status: 'verified',
-          label: 'Vegetarian café on-site',
-          note: 'Atrium café serves vegetarian sandwiches, salads, and fresh smoothies.'
+          label: 'Vegetarian canteen on-site',
+          note: 'Campus canteen serves vegetarian South Indian snacks, tea, and filter coffee.'
         },
         vegan: {
           status: 'unknown',
-          label: 'Vegan café options',
-          note: 'Limited packaged vegan snacks; fresh options vary.'
+          label: 'Vegan options',
+          note: 'Limited packaged snacks.'
         },
         gluten_free: {
           status: 'unknown',
           label: 'Gluten-free options',
-          note: 'Packaged GF chips available.'
+          note: 'Not verified.'
         },
         allergy_aware: {
           status: 'unknown',
           label: 'Allergy-aware protocol',
-          note: 'Third-party café operator, allergen protocol unverified.'
+          note: 'Local vendor canteen.'
         }
       },
       parking_transit: {
         dedicated_accessible_parking: {
           status: 'verified',
           label: 'Dedicated accessible parking bays',
-          note: 'Direct underground connection to 10 reserved spaces.'
+          note: '4 reserved parking bays near ramp entrance.'
         },
         curbside_dropoff: {
           status: 'verified',
           label: 'Curbside drop-off zone',
-          note: 'Dedicated ADA passenger drop-off lane on Library Square.'
+          note: 'Designated drop-off zone at main gate.'
         },
         near_transit: {
           status: 'verified',
           label: 'Near accessible transit stop',
-          note: 'Civic Center BART & Muni station elevator opens directly across the plaza.'
+          note: 'Assembly Metro Station 250m away with elevator.'
         }
       }
     },
@@ -3105,41 +3052,39 @@ const PLACES_DATA = [
       userReportedCount: 1
     },
     matchHighlights: [
-      'Automated heated entrance ramp and power doors',
-      'Motorized height-adjustable computer desks in adaptive technology center',
-      'Pristine silent study rooms on upper floors (< 40 dB)',
-      'Direct elevator connection to underground accessible parking',
-      'BART/Muni transit elevator directly across plaza'
+      'Accessible entrance ramp and power doors',
+      'Height-adjustable desks in adaptive technology wing',
+      'Pristine silent study halls (< 42 dB)',
+      'Assembly Metro Station elevator directly nearby'
     ],
     knowBeforeYouGo: {
       verified: [
         'Heated automatic entrance ramp with power sliding doors',
         'Accessible restrooms on every floor with dual grab bars',
         'Motorized adjustable-height workstations',
-        'Dedicated silent study floors (< 40 dB)',
-        '10 underground van-accessible stalls with elevator'
+        'Dedicated silent study floors (< 42 dB)'
       ],
       unknown: [
-        'Atrium café allergen protocol not independently certified'
+        'Canteen allergen cross-contact protocol unverified'
       ],
       doesntMatch: []
     }
   },
   {
     id: 'place-08',
-    name: 'The Pavilion Shopping Arcade',
-    tagline: 'Multi-level glass galleria featuring boutique stores & dining',
+    name: 'Inorbit Galleria & Shopping Arcade',
+    tagline: 'Multi-level shopping center with international stores & food court',
     categoryId: 'shopping',
     categoryName: 'Shopping',
-    rating: 4.5,
-    reviewCount: 476,
-    priceLevel: '$$$',
+    rating: 4.6,
+    reviewCount: 1850,
+    priceLevel: '₹₹₹',
     distanceKm: 2.7,
-    address: '600 Galleria Way, Retail District',
-    phone: '(555) 890-1234',
-    website: 'https://thepavilion.example.com',
-    openingHours: 'Open · Closes 9:00 PM',
-    coords: { lat: 37.7870, lng: -122.4070 },
+    address: 'Mindspace, Madhapur, Hyderabad, Telangana',
+    phone: '+91 040 4488 0000',
+    website: 'https://inorbit-hyderabad.example.com',
+    openingHours: 'Open · Closes 10:00 PM',
+    coords: { lat: 17.4350, lng: 78.3840 },
     photo: 'https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?auto=format&fit=crop&w=1000&q=80',
     googlePlacesId: 'ChIJ8X1_tDeuEmsRUsoyG83frH8',
     googleData: {
@@ -3154,93 +3099,93 @@ const PLACES_DATA = [
         wheelchair_entrance: {
           status: 'verified',
           label: 'Wheelchair-accessible entrance',
-          note: 'Four accessible main entrances with automatic sensor sliding doors.'
+          note: 'Four accessible main entrances with automatic sensor sliding glass doors.'
         },
         wheelchair_restroom: {
           status: 'verified',
           label: 'Wheelchair-accessible restroom',
-          note: 'Spacious family and unisex accessible restrooms on levels 1, 2, and 3.'
+          note: 'Spacious unisex accessible restrooms on all 4 retail levels.'
         },
         wheelchair_parking: {
           status: 'verified',
           label: 'Wheelchair-accessible parking',
-          note: 'Connected multi-story garage with 18 accessible spots near each elevator lobby.'
+          note: 'Multi-level parking garage with 24 reserved accessible stalls near elevator lobbies.'
         },
         wheelchair_seating: {
           status: 'verified',
           label: 'Wheelchair-accessible seating',
-          note: 'Ample resting benches and food court accessible dining tables.'
+          note: 'Food court offers dedicated accessible seating with lower tables.'
         },
         step_free_interior: {
           status: 'verified',
           label: 'Step-free interior pathways',
-          note: 'Wide open polished terrazzo concourses with gentle floor gradients.'
+          note: 'Wide open terrazzo concourses with zero steps.'
         },
         accessible_elevator: {
           status: 'verified',
           label: 'Accessible elevator',
-          note: '3 glass elevators connecting all retail levels.'
+          note: '6 panoramic and service elevators connecting all levels.'
         }
       },
       sensory: {
         quiet_environment: {
           status: 'no',
           label: 'Quiet / Low noise environment',
-          note: 'High ambient shopping mall noise, background pop music, and echoing hard surfaces (~74 dB).'
+          note: 'Lively mall ambiance, music, and echoing crowds (~74 dB).'
         },
         soft_lighting: {
           status: 'verified',
           label: 'Natural / Soft warm lighting',
-          note: 'Massive vaulted glass ceiling provides daylight; warm store lighting.'
+          note: 'Massive skylight atrium provides natural light.'
         },
         spacious_aisles: {
           status: 'verified',
           label: 'Spacious seating & wide aisles',
-          note: 'Main concourses exceed 4 meters in width.'
+          note: 'Concourses are 5 meters wide.'
         },
         low_crowd: {
           status: 'no',
           label: 'Low crowd density',
-          note: 'Busy shopping crowd during weekends.'
+          note: 'Crowded on weekend evenings.'
         }
       },
       dietary: {
         vegetarian: {
           status: 'verified',
-          label: 'Vegetarian food hall options',
-          note: 'Diverse food hall featuring vegan sushi, Mediterranean bowls, and juice bars.'
+          label: 'Vegetarian food court options',
+          note: 'Over 12 dedicated pure vegetarian outlets including Haldirams, Rajdhani, and Subway.'
         },
         vegan: {
           status: 'verified',
           label: 'Vegan options',
-          note: 'Clearly labeled plant-based food vendors.'
+          note: 'Juice bars, vegan bowls, and South Indian idlis/dosas.'
         },
         gluten_free: {
           status: 'unknown',
           label: 'Gluten-free options',
-          note: 'Varies by food hall vendor.'
+          note: 'Varies by outlet.'
         },
         allergy_aware: {
           status: 'unknown',
           label: 'Allergy-aware protocol',
-          note: 'Each merchant manages their own allergen disclosures.'
+          note: 'Each merchant manages their own disclosures.'
         }
       },
       parking_transit: {
         dedicated_accessible_parking: {
           status: 'verified',
           label: 'Dedicated accessible parking bays',
-          note: '18 clearly marked spots across 3 levels.'
+          note: '24 marked spots with wheelchair borrow service at concierge.'
         },
         curbside_dropoff: {
           status: 'verified',
           label: 'Curbside drop-off zone',
-          note: 'Covered taxi & rideshare pull-through bay.'
+          note: 'Covered taxi and auto drop-off bay.'
         },
         near_transit: {
           status: 'verified',
           label: 'Near accessible transit stop',
-          note: 'Powell Street cable car and BART station elevator connected directly.'
+          note: 'Durgam Cheruvu Metro Station 600m away.'
         }
       }
     },
@@ -3252,19 +3197,19 @@ const PLACES_DATA = [
     },
     matchHighlights: [
       'Four automatic sensor entrance ways with zero threshold',
-      '18 van-accessible garage spots near elevator lobbies',
+      '24 van-accessible garage spots near elevator lobbies with free wheelchair lending',
       'Diverse food hall with vegetarian & plant-based vendors',
-      'NOTE: Loud shopping concourses (~74 dB) may challenge quiet preference'
+      'NOTE: Lively shopping concourses (~74 dB) may challenge quiet preference'
     ],
     knowBeforeYouGo: {
       verified: [
-        'Automatic sliding doors at all 4 entrances',
+        'Automatic sliding doors at all main entrances',
         'Spacious accessible restrooms on every floor',
-        '18 reserved garage stalls with elevator connectivity',
-        'Food hall offers vegetarian & vegan options'
+        '24 reserved garage stalls with elevator connectivity',
+        'Food court offers pure vegetarian options'
       ],
       unknown: [
-        'Individual boutique interior rack clearance varies (some stores narrow)',
+        'Individual boutique interior rack clearance varies',
         'Vendor allergy cross-contact controls vary'
       ],
       doesntMatch: [
@@ -3274,19 +3219,19 @@ const PLACES_DATA = [
   },
   {
     id: 'place-09',
-    name: 'Civic Botanical Conservatory & Park',
-    tagline: 'Historic Victorian greenhouse and sensory fragrance park',
+    name: 'Botanical Garden & Sensory Eco Park',
+    tagline: 'Expansive 120-acre eco garden with paved trails & fragrance flora',
     categoryId: 'park',
     categoryName: 'Park',
-    rating: 4.8,
-    reviewCount: 730,
-    priceLevel: '$',
+    rating: 4.7,
+    reviewCount: 1120,
+    priceLevel: '₹',
     distanceKm: 1.8,
-    address: '100 John F. Kennedy Promenade, Golden Gate Park',
-    phone: '(555) 901-3456',
-    website: 'https://botanical-conservatory.example.org',
-    openingHours: 'Open · Closes 5:30 PM',
-    coords: { lat: 37.7725, lng: -122.4600 },
+    address: 'Kothaguda, Kondapur, Hyderabad, Telangana',
+    phone: '+91 040 2300 1234',
+    website: 'https://botanicalgarden-hyd.example.org',
+    openingHours: 'Open · Closes 6:00 PM',
+    coords: { lat: 17.4580, lng: 78.3680 },
     photo: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1000&q=80',
     googlePlacesId: 'ChIJ9X1_tDeuEmsRUsoyG83frI9',
     googleData: {
@@ -3301,49 +3246,49 @@ const PLACES_DATA = [
         wheelchair_entrance: {
           status: 'verified',
           label: 'Wheelchair-accessible entrance',
-          note: 'Dedicated paved accessible ramp entrance on West Pavilion with push-button automatic door.'
+          note: 'Wide gated entrance with paved ramp and dedicated battery-operated accessible buggy.'
         },
         wheelchair_restroom: {
           status: 'verified',
           label: 'Wheelchair-accessible restroom',
-          note: 'Public ADA restrooms located in adjacent park welcome pavilion.'
+          note: 'Public accessible restrooms located in visitor center pavilion.'
         },
         wheelchair_parking: {
           status: 'verified',
           label: 'Wheelchair-accessible parking',
-          note: '6 designated ADA parking spaces in Conservatory East parking lot.'
+          note: '8 designated accessible parking spaces in main paved parking area.'
         },
         wheelchair_seating: {
           status: 'verified',
           label: 'Wheelchair-accessible seating',
-          note: 'Wood garden resting benches along all paved paths; sensory garden has tactile planters at chair height.'
+          note: 'Resting benches along paved 3km trail; sensory garden has raised floral planters.'
         },
         step_free_interior: {
           status: 'verified',
           label: 'Step-free interior pathways',
-          note: 'All greenhouse gallery pathways paved with smooth asphalt or textured non-slip concrete.'
+          note: 'Main 3km circular trail is paved with smooth asphalt.'
         },
         accessible_elevator: {
           status: 'verified',
           label: 'Accessible elevator',
-          note: 'Single level Victorian greenhouse.'
+          note: 'Single level nature park.'
         }
       },
       sensory: {
         quiet_environment: {
           status: 'verified',
           label: 'Quiet / Low noise environment',
-          note: 'Tranquil botanical atmosphere with natural bird songs, plant rustling, and humid warmth (~46 dB).'
+          note: 'Peaceful tranquil birdsong and gentle nature sounds (< 46 dB).'
         },
         soft_lighting: {
           status: 'verified',
           label: 'Natural / Soft warm lighting',
-          note: 'Full natural spectrum sunlight filtered through historic white glass conservatory panels.'
+          note: 'Natural sunlight filtered through bamboo and teak trees.'
         },
         spacious_aisles: {
-          status: 'unknown',
+          status: 'verified',
           label: 'Spacious seating & wide aisles',
-          note: 'Main pathways are 1.3m wide, but tropical plant fronds occasionally overhang walkways.'
+          note: 'Main paved paths are 2.5m wide.'
         },
         low_crowd: {
           status: 'verified',
@@ -3354,13 +3299,13 @@ const PLACES_DATA = [
       dietary: {
         vegetarian: {
           status: 'unknown',
-          label: 'Vegetarian café on-site',
-          note: 'Outdoor kiosk has seasonal plant-based drinks and fruit bowls, but limited hot food.'
+          label: 'Vegetarian snacks on-site',
+          note: 'Kiosk sells coconut water, fresh juices, and packaged vegetarian biscuits.'
         },
         vegan: {
           status: 'unknown',
           label: 'Vegan options',
-          note: 'Beverages available.'
+          note: 'Fresh coconut water.'
         },
         gluten_free: {
           status: 'unknown',
@@ -3370,24 +3315,24 @@ const PLACES_DATA = [
         allergy_aware: {
           status: 'unknown',
           label: 'Allergy-aware protocol',
-          note: 'High floral pollen environment; may affect severe plant allergy sufferers.'
+          note: 'High floral pollen environment during blooming season.'
         }
       },
       parking_transit: {
         dedicated_accessible_parking: {
           status: 'verified',
           label: 'Dedicated accessible parking bays',
-          note: '6 reserved spots with blue curb.'
+          note: '8 reserved spots near entry ticket counter.'
         },
         curbside_dropoff: {
           status: 'verified',
           label: 'Curbside drop-off zone',
-          note: 'Direct drop-off at JFK Promenade pedestrian plaza gate.'
+          note: 'Direct drop-off at main gate.'
         },
         near_transit: {
           status: 'verified',
           label: 'Near accessible transit stop',
-          note: 'Park shuttle bus is 100% ADA low-floor wheelchair accessible.'
+          note: 'Kothaguda X Roads bus stop 200m away.'
         }
       }
     },
@@ -3398,40 +3343,40 @@ const PLACES_DATA = [
       userReportedCount: 1
     },
     matchHighlights: [
-      'Paved ramp entrance on West Pavilion with push-button activation',
+      'Paved ramp entrance with accessible battery buggies available',
       'Tactile raised garden planters designed for wheelchair reach',
-      'Quiet tranquil nature sounds (~46 dB)',
-      '6 reserved ADA parking spaces in Conservatory East lot'
+      'Tranquil nature sounds (< 46 dB)',
+      '8 reserved parking spaces in main lot'
     ],
     knowBeforeYouGo: {
       verified: [
-        'Push-button automatic door on west ramp',
-        'Paved asphalt & concrete pathways throughout',
-        'Low ambient sound level (< 50 dB)',
-        '6 dedicated parking spaces in adjacent lot'
+        'Level entrance gate with paved ramp',
+        'Paved asphalt pathways on main 3km trail',
+        'Low ambient sound level (< 46 dB)',
+        '8 dedicated parking spaces in front'
       ],
       unknown: [
-        'Greenhouse humid air and seasonal pollen count may affect respiratory sensitivity',
-        'Overhanging exotic plants may brush power chair antennas or tall headrests'
+        'Seasonal pollen count may affect individuals with plant allergies',
+        'Unpaved side dirt trails not recommended for standard wheelchairs'
       ],
       doesntMatch: []
     }
   },
   {
     id: 'place-10',
-    name: 'The Starlight Repertory Cinema',
-    tagline: 'Restored Art Deco theatre screening indie films & classics',
+    name: 'PVR INOX Repertory Multiplex',
+    tagline: 'Modern cinema with companion wheelchair spaces & Dolby Atmos',
     categoryId: 'entertainment',
     categoryName: 'Entertainment',
     rating: 4.6,
-    reviewCount: 310,
-    priceLevel: '$$',
+    reviewCount: 640,
+    priceLevel: '₹₹₹',
     distanceKm: 2.9,
-    address: '444 Castro Street, Mission District',
-    phone: '(555) 012-3456',
-    website: 'https://starlightcinema.example.com',
-    openingHours: 'Open · Closes 11:30 PM',
-    coords: { lat: 37.7608, lng: -122.4350 },
+    address: 'GVK One Mall, Road No. 1, Banjara Hills, Hyderabad, Telangana',
+    phone: '+91 040 6749 0000',
+    website: 'https://pvr-banjarahills.example.com',
+    openingHours: 'Open · Closes 12:30 AM',
+    coords: { lat: 17.4190, lng: 78.4480 },
     photo: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1000&q=80',
     googlePlacesId: 'ChIJ0X1_tDeuEmsRUsoyG83frJ0',
     googleData: {
@@ -3446,139 +3391,136 @@ const PLACES_DATA = [
         wheelchair_entrance: {
           status: 'verified',
           label: 'Wheelchair-accessible entrance',
-          note: 'Street level entrance through historic double doors held open before showtimes.'
+          note: 'Mall elevator leads directly to cinema foyer; step-free entrance to auditoriums.'
         },
         wheelchair_restroom: {
           status: 'verified',
           label: 'Wheelchair-accessible restroom',
-          note: 'Renovated ground floor single-stall gender neutral ADA restroom.'
+          note: 'Accessible unisex restroom with grab bars located near Audi 3.'
         },
         wheelchair_parking: {
-          status: 'no',
+          status: 'verified',
           label: 'Wheelchair-accessible parking',
-          note: 'No theater parking lot. Neighborhood street parking is very challenging.'
+          note: 'Mall basement parking with 12 accessible stalls and elevator access.'
         },
         wheelchair_seating: {
           status: 'verified',
           label: 'Wheelchair-accessible seating',
-          note: '6 integrated wheelchair companion spaces in mid-auditorium (prime viewing angle, not front row!).'
+          note: 'Dedicated mid-auditorium wheelchair spots with companion seats.'
         },
         step_free_interior: {
           status: 'verified',
           label: 'Step-free interior pathways',
-          note: 'Ramped auditorium aisles with 1:14 slope and soft LED floor lighting.'
+          note: 'Ramped gentle auditorium walkways with soft guide lighting.'
         },
         accessible_elevator: {
-          status: 'no',
+          status: 'verified',
           label: 'Accessible elevator',
-          note: 'Balcony level has stairs only (ground floor seating is 100% accessible).'
+          note: 'Direct high-speed mall elevators.'
         }
       },
       sensory: {
         quiet_environment: {
           status: 'unknown',
           label: 'Quiet / Low noise environment',
-          note: 'Film volume varies by screening; sensory-friendly matinees offered every first Sunday.'
+          note: 'Sound volume depends on movie; sensory-friendly morning screenings available monthly.'
         },
         soft_lighting: {
           status: 'verified',
           label: 'Natural / Soft warm lighting',
-          note: 'Vintage sconce lighting dimmed gradually before movie start.'
+          note: 'Gradual dimmer controls before screenings.'
         },
         spacious_aisles: {
           status: 'verified',
           label: 'Spacious seating & wide aisles',
-          note: 'Auditorium main aisle is 1.6m wide.'
+          note: 'Main auditorium cross-aisle is 1.6m wide.'
         },
         low_crowd: {
           status: 'unknown',
           label: 'Low crowd density',
-          note: 'Classic screenings sell out; reserve early.'
+          note: 'Blockbuster release weekends are busy.'
         }
       },
       dietary: {
         vegetarian: {
           status: 'verified',
           label: 'Vegetarian concessions',
-          note: 'Organic popcorn popped in coconut oil with nutritional yeast topping option.'
+          note: 'Fresh salted and cheese popcorn, vegetarian samosas, and nachos.'
         },
         vegan: {
           status: 'verified',
           label: 'Vegan options',
-          note: 'Dairy-free dark chocolate confections and plant milk cold brews.'
+          note: 'Salted popcorn and soft beverages.'
         },
         gluten_free: {
           status: 'verified',
           label: 'Gluten-free options',
-          note: 'Certified gluten-free candy and popcorn.'
+          note: 'Certified gluten-free packaged snacks.'
         },
         allergy_aware: {
           status: 'unknown',
           label: 'Allergy-aware protocol',
-          note: 'Popcorn seasoned on shared equipment.'
+          note: 'Popcorn seasoned on shared concession equipment.'
         }
       },
       parking_transit: {
         dedicated_accessible_parking: {
-          status: 'no',
+          status: 'verified',
           label: 'Dedicated accessible parking bays',
-          note: 'Street parking only; recommend accessible taxi or public transit.'
+          note: 'Mall parking with reserved accessible spaces.'
         },
         curbside_dropoff: {
           status: 'verified',
           label: 'Curbside drop-off zone',
-          note: 'White passenger loading zone directly in front under marquee.'
+          note: 'Covered valet drop-off porch.'
         },
         near_transit: {
           status: 'verified',
           label: 'Near accessible transit stop',
-          note: 'Castro Street Muni Station 150m away with elevator.'
+          note: 'Irrum Manzil Metro Station is 400m away with elevator.'
         }
       }
     },
     confidence: {
-      coveragePercent: 80,
-      verifiedCount: 11,
-      unknownCount: 3,
-      userReportedCount: 2
+      coveragePercent: 88,
+      verifiedCount: 13,
+      unknownCount: 2,
+      userReportedCount: 1
     },
     matchHighlights: [
-      'Integrated mid-auditorium wheelchair companion seating with unobstructed views',
-      'Renovated ground floor single-stall ADA restroom',
-      'Curbside loading zone directly under historic marquee',
-      'No dedicated parking lot — transit or drop-off advised'
+      'Integrated mid-auditorium wheelchair spaces with companion seating',
+      'Mall elevator connection with accessible parking stalls',
+      'Accessible restroom near auditoriums',
+      'Irrum Manzil Metro elevator 400m away'
     ],
     knowBeforeYouGo: {
       verified: [
-        'Level street entrance under illuminated marquee',
-        'Mid-auditorium wheelchair spaces with companion seating',
-        'Renovated ground-floor unisex ADA restroom',
-        'Assistive listening headsets and closed caption devices available'
+        'Step-free entrance from mall elevator',
+        'Mid-auditorium wheelchair companion seating',
+        'Accessible restroom on cinema level',
+        'Assistive listening headsets available on request'
       ],
       unknown: [
-        'Balcony seating is accessible by stairs only',
-        'Screening audio decibel level varies by movie selection'
+        'Audio decibel volume varies by screening'
       ],
-      doesntMatch: [
-        'No dedicated accessible parking lot on premises'
-      ]
+      doesntMatch: []
     }
   },
   {
     id: 'place-11',
-    name: 'Oak & Stone Artisan Bakery',
-    tagline: 'Warm neighborhood sourdough bakery with open display kitchen',
+    name: 'Almond & Stone Artisan Bakery',
+    tagline: 'Warm neighborhood artisanal sourdough bakery & confectioner',
     categoryId: 'cafe',
     categoryName: 'Café / Bakery',
     rating: 4.7,
-    reviewCount: 215,
-    priceLevel: '$',
+    reviewCount: 320,
+    priceLevel: '₹₹',
     distanceKm: 0.6,
-    address: '154 Oakwood Avenue, Hayes Valley',
-    phone: '(555) 123-4567',
-    website: 'https://oakandstone.example.com',
-    openingHours: 'Open · Closes 4:00 PM',
-    coords: { lat: 37.7760, lng: -122.4240 },
+    address: 'Near Old MLA Quarters, Himayatnagar, Hyderabad, Telangana',
+    phone: '+91 98480 56789',
+    website: 'https://almondandstone-india.example.com',
+    openingHours: 'Open · Closes 9:30 PM',
+    coords: { lat: 17.4040, lng: 78.4860 },
     photo: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80',
     googlePlacesId: 'ChIJ1X1_tDeuEmsRUsoyG83frK1',
     googleData: {
@@ -3598,61 +3540,61 @@ const PLACES_DATA = [
         wheelchair_restroom: {
           status: 'unknown',
           label: 'Wheelchair-accessible restroom',
-          note: 'Staff indicates restroom is on ground floor, but exact doorway width is unverified.'
+          note: 'Restroom on ground floor, doorway clearance unverified.'
         },
         wheelchair_parking: {
           status: 'no',
           label: 'Wheelchair-accessible parking',
-          note: 'Residential neighborhood with street parallel parking only.'
+          note: 'Street parking only.'
         },
         wheelchair_seating: {
           status: 'verified',
           label: 'Wheelchair-accessible seating',
-          note: 'Two standard height cafe tables near windows with movable stools and chairs.'
+          note: 'Standard height cafe tables with movable chairs.'
         },
         step_free_interior: {
           status: 'verified',
           label: 'Step-free interior pathways',
-          note: 'Level concrete floor inside bakery.'
+          note: 'Level tiled floor.'
         },
         accessible_elevator: {
           status: 'verified',
           label: 'Accessible elevator',
-          note: 'Single-story shop.'
+          note: 'Single story shop.'
         }
       },
       sensory: {
         quiet_environment: {
           status: 'verified',
           label: 'Quiet / Low noise environment',
-          note: 'Soft acoustic music, tranquil morning neighborhood ambiance (~50 dB).'
+          note: 'Soft classical instrumental music, peaceful morning atmosphere (~50 dB).'
         },
         soft_lighting: {
           status: 'verified',
           label: 'Natural / Soft warm lighting',
-          note: 'Morning eastern sun and vintage Edison bulbs.'
+          note: 'Warm lighting and daylight.'
         },
         spacious_aisles: {
           status: 'no',
           label: 'Spacious seating & wide aisles',
-          note: 'Cozy shop; ordering queue may narrow path to ~80cm during morning rush.'
+          note: 'Cozy shop; ordering counter queue can narrow path to ~80cm.'
         },
         low_crowd: {
           status: 'unknown',
           label: 'Low crowd density',
-          note: 'Lines form between 8:30am and 10:00am.'
+          note: 'Rush between 5:30pm and 7:00pm.'
         }
       },
       dietary: {
         vegetarian: {
           status: 'verified',
           label: 'Vegetarian pastries & breads',
-          note: 'Over 15 sourdough loaves, morning buns, and vegetarian sandwiches.'
+          note: '100% eggless artisanal sourdoughs, croissants, and tea cakes.'
         },
         vegan: {
           status: 'verified',
           label: 'Vegan options',
-          note: 'Naturally vegan artisanal sourdoughs and olive focaccia.'
+          note: 'Naturally vegan sourdough loaves and focaccias.'
         },
         gluten_free: {
           status: 'no',
@@ -3662,7 +3604,7 @@ const PLACES_DATA = [
         allergy_aware: {
           status: 'no',
           label: 'Allergy-aware kitchen',
-          note: 'Airborne flour and tree nuts processed daily.'
+          note: 'Airborne flour and almonds processed daily.'
         }
       },
       parking_transit: {
@@ -3674,12 +3616,12 @@ const PLACES_DATA = [
         curbside_dropoff: {
           status: 'verified',
           label: 'Curbside drop-off zone',
-          note: 'Curbside 15-minute loading zone in front of boutique across street.'
+          note: 'Direct curbside drop-off in front.'
         },
         near_transit: {
           status: 'verified',
           label: 'Near accessible transit stop',
-          note: 'Bus line 21 stops on corner.'
+          note: 'Himayatnagar bus stop 80m away.'
         }
       }
     },
@@ -3691,20 +3633,19 @@ const PLACES_DATA = [
     },
     matchHighlights: [
       'Level entrance with low threshold ramp',
-      'Wonderful vegetarian sourdough and morning pastries',
+      '100% eggless vegetarian sourdough and pastries',
       'Quiet cozy neighborhood atmosphere (< 55 dB)',
-      'Restroom ADA compliance currently UNKNOWN',
+      'Restroom compliance currently UNKNOWN',
       'Flour in the air — NOT suitable for celiac gluten-free requirements'
     ],
     knowBeforeYouGo: {
       verified: [
         'Low threshold ramp at front entrance (< 2cm)',
         'Quiet morning atmosphere',
-        'Fresh vegetarian sourdoughs baked daily'
+        '100% eggless vegetarian baked goods'
       ],
       unknown: [
-        'Restroom ADA clearance and grab bar status unverified',
-        'Morning peak queue can narrow aisle clearance'
+        'Restroom ADA clearance and grab bar status unverified'
       ],
       doesntMatch: [
         'No customer parking lot',
@@ -3714,19 +3655,19 @@ const PLACES_DATA = [
   },
   {
     id: 'place-12',
-    name: 'Urban Pulse Gastro Pub',
-    tagline: 'Lively craft brewery and taproom with elevated pub grub',
+    name: 'Heart Cup & Urban Pulse Gastro Taproom',
+    tagline: 'Lively open-air live music brewery and fusion kitchen',
     categoryId: 'restaurant',
     categoryName: 'Restaurant / Pub',
     rating: 4.4,
-    reviewCount: 388,
-    priceLevel: '$$',
+    reviewCount: 480,
+    priceLevel: '₹₹',
     distanceKm: 1.9,
-    address: '320 Brewer Street, SoMa',
-    phone: '(555) 234-5678',
-    website: 'https://urbanpulsepub.example.com',
+    address: 'Near Botanical Garden, Kondapur, Hyderabad, Telangana',
+    phone: '+91 99490 67890',
+    website: 'https://heartcup-kondapur.example.com',
     openingHours: 'Open · Closes 12:00 AM',
-    coords: { lat: 37.7780, lng: -122.4010 },
+    coords: { lat: 17.4610, lng: 78.3650 },
     photo: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1000&q=80',
     googlePlacesId: 'ChIJ2X1_tDeuEmsRUsoyG83frL2',
     googleData: {
@@ -3741,27 +3682,27 @@ const PLACES_DATA = [
         wheelchair_entrance: {
           status: 'verified',
           label: 'Wheelchair-accessible entrance',
-          note: 'Side patio entrance has smooth ramp with handrails and call buzzer.'
+          note: 'Side garden entrance has smooth paved ramp with handrails.'
         },
         wheelchair_restroom: {
           status: 'verified',
           label: 'Wheelchair-accessible restroom',
-          note: 'Two spacious single-occupancy restrooms with grab bars.'
+          note: 'Ground floor accessible restroom with grab bars.'
         },
         wheelchair_parking: {
           status: 'unknown',
           label: 'Wheelchair-accessible parking',
-          note: 'Public surface lot nearby, but dedicated stalls not verified.'
+          note: 'Valet parking only; dedicated accessible bays unverified.'
         },
         wheelchair_seating: {
           status: 'no',
           label: 'Wheelchair-accessible seating',
-          note: 'Majority of seating is high-top bar tables with tall fixed stools. Only 3 low tables.'
+          note: 'Majority of seating consists of high-top bar tables with tall fixed stools. Only 3 low tables.'
         },
         step_free_interior: {
           status: 'verified',
           label: 'Step-free interior pathways',
-          note: 'Level industrial concrete floors.'
+          note: 'Level outdoor garden concrete.'
         },
         accessible_elevator: {
           status: 'verified',
@@ -3773,39 +3714,39 @@ const PLACES_DATA = [
         quiet_environment: {
           status: 'no',
           label: 'Quiet / Low noise environment',
-          note: 'Industrial brewery space with steel tanks; loud music and crowds (~82 dB).'
+          note: 'Live bands and loud music create ~82 dB ambient sound.'
         },
         soft_lighting: {
           status: 'no',
           label: 'Natural / Soft warm lighting',
-          note: 'Dim bar lighting with flashing sports TV screens.'
+          note: 'Flashing stage lights and neon bar illumination.'
         },
         spacious_aisles: {
           status: 'no',
           label: 'Spacious seating & wide aisles',
-          note: 'Standing crowds often congest walkways between bar and patio.'
+          note: 'Standing weekend crowds congest walkways.'
         },
         low_crowd: {
           status: 'no',
           label: 'Low crowd density',
-          note: 'Very high crowd volume on evenings and game days.'
+          note: 'High volume on weekends.'
         }
       },
       dietary: {
         vegetarian: {
           status: 'verified',
           label: 'Vegetarian menu options',
-          note: 'Beyond burger, truffle fries, soft pretzels with beer cheese.'
+          note: 'Paneer tikka, vegetarian pizza, loaded nachos, and peri peri fries.'
         },
         vegan: {
           status: 'verified',
           label: 'Vegan options',
-          note: 'Plant-based burger and cauliflower wings.'
+          note: 'Plant-based appetizers.'
         },
         gluten_free: {
           status: 'unknown',
           label: 'Gluten-free options',
-          note: 'Cider available; fryer is shared with wheat.'
+          note: 'Fried items share oil with wheat.'
         },
         allergy_aware: {
           status: 'unknown',
@@ -3817,17 +3758,17 @@ const PLACES_DATA = [
         dedicated_accessible_parking: {
           status: 'unknown',
           label: 'Dedicated accessible parking bays',
-          note: 'Nearby public lot unverified.'
+          note: 'Valet parking.'
         },
         curbside_dropoff: {
           status: 'verified',
           label: 'Curbside drop-off zone',
-          note: 'Curb zone on 4th Street.'
+          note: 'Curbside drop-off zone at main gate.'
         },
         near_transit: {
           status: 'verified',
           label: 'Near accessible transit stop',
-          note: '4th & King Muni stop within 200m.'
+          note: 'Kondapur bus stop 250m away.'
         }
       }
     },
@@ -3838,22 +3779,22 @@ const PLACES_DATA = [
       userReportedCount: 2
     },
     matchHighlights: [
-      'Accessible side patio ramp entrance with buzzer',
-      'Verified single-occupancy ADA restroom with grab bars',
-      'CRITICAL SENSORY MISMATCH: High ambient noise level (~82 dB)',
-      'Limited standard-height seating (mostly high-top bar stools)'
+      'Accessible side ramp entrance',
+      'Verified ground floor accessible restroom with grab bars',
+      'CRITICAL SENSORY MISMATCH: Live music volume reaches ~82 dB',
+      'Limited standard-height seating (mostly high bar stools)'
     ],
     knowBeforeYouGo: {
       verified: [
-        'Side ramp entrance with call button',
-        'Spacious single-occupancy ADA restroom',
-        'Vegetarian pub fare available'
+        'Side ramp entrance',
+        'Ground floor accessible restroom',
+        'Vegetarian pub starters available'
       ],
       unknown: [
-        'Dedicated parking lot status unverified'
+        'Dedicated self-parking lot status unverified'
       ],
       doesntMatch: [
-        'High ambient noise (~82 dB) and sports TVs do not match quiet preference',
+        'High ambient noise (~82 dB) and live bands do not match quiet preference',
         'Mostly high-top bar tables with tall fixed stools',
         'Standing crowds congest interior walkways during peak hours'
       ]
@@ -4279,7 +4220,7 @@ window.wayviaGemini = new WayviaGeminiService();
 
 // --- js/map.js ---
 /**
- * WAYVIA Map Engine & Google Maps Platform Integration
+ * WAYVIA Map Engine & Google Maps Platform Integration — India Edition
  * 
  * Interactive map supporting Leaflet with custom WAYVIA presentation pin styling,
  * journey trails, and seamless Google Maps deep-links.
@@ -4289,7 +4230,8 @@ class WayviaMapService {
   constructor() {
     this.map = null;
     this.markers = [];
-    this.userLocation = { lat: 37.7850, lng: -122.4090 }; // Central downtown
+    // User location centered in Hyderabad, Telangana, India (Jubilee Hills / HITEC City)
+    this.userLocation = { lat: 17.4300, lng: 78.3980 };
     this.routeLine = null;
     this.activePlaceId = null;
   }
@@ -4303,10 +4245,10 @@ class WayviaMapService {
       this.map = null;
     }
 
-    // Initialize Leaflet map
+    // Initialize Leaflet map centered over Hyderabad, India
     this.map = L.map(containerId, {
       center: [this.userLocation.lat, this.userLocation.lng],
-      zoom: 14,
+      zoom: 13,
       zoomControl: false
     });
 
@@ -4342,7 +4284,7 @@ class WayviaMapService {
               <circle cx="12" cy="12" r="6"/>
             </svg>
           </div>
-          <div class="user-label-pill">Your Location</div>
+          <div class="user-label-pill">Your Location (Hyderabad)</div>
         </div>
       `,
       iconSize: [32, 32],
@@ -4416,7 +4358,7 @@ class WayviaMapService {
 
     const latlngs = [
       [this.userLocation.lat, this.userLocation.lng],
-      [(this.userLocation.lat + place.coords.lat) / 2 + 0.002, (this.userLocation.lng + place.coords.lng) / 2 - 0.003], // graceful curve
+      [(this.userLocation.lat + place.coords.lat) / 2 + 0.002, (this.userLocation.lng + place.coords.lng) / 2 - 0.003],
       [place.coords.lat, place.coords.lng]
     ];
 
@@ -5625,6 +5567,4 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 </script>
-
 </body>
-</html>
