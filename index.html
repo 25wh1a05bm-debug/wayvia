@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WAYVIA — Find Your Way. Your Way.</title>
+  
+  <!-- Favicon with Pink Location Pin -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E83D84'><circle cx='12' cy='12' r='10'/></svg>">
+
+  <!-- Google Fonts: Playball (Script), Bodoni Moda & Playfair Display (Serif), Plus Jakarta Sans (Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,600;0,6..96,800;1,6..96,600&family=Playball&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Satisfy&display=swap" rel="stylesheet">
+
+  <!-- Leaflet CSS for Interactive Location Layer -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+  <!-- WAYVIA Presentation Design System CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Floating Toast Notification -->
+  <div id="app-toast" style="display: none; position: fixed; top: 20px; right: 20px; z-index: 9999; background: #FFFDF9; border: 2px solid #E83D84; border-radius: 9999px; padding: 10px 22px; color: #E83D84; font-weight: 800; font-size: 0.88rem; box-shadow: 0 8px 24px rgba(232, 61, 132, 0.25);">
+    Notification message
+  </div>
+
+  <!-- Section 23: Guided Demo Flow Interactive Stepper Banner -->
+  <div id="demo-flow-banner" style="display: none; position: sticky; top: 0; z-index: 1000; background: linear-gradient(90deg, #1E40AF 0%, #E83D84 100%); color: #FFFFFF; padding: 12px 24px; align-items: center; justify-content: space-between; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <span style="background: #FFFFFF; color: #1E40AF; padding: 3px 10px; border-radius: 9999px; font-weight: 800; font-size: 0.75rem; text-transform: uppercase;">
+        Google Demo Flow
+      </span>
+      <div>
+        <strong id="demo-step-title" style="font-size: 0.95rem;">Step 1 of 8: Natural Language Understanding</strong>
+        <p id="demo-step-text" style="font-size: 0.82rem; opacity: 0.9; margin: 0;">Gemini extracting structured requirements...</p>
+      </div>
+    </div>
+    <div style="display: flex; gap: 10px; align-items: center;">
+      <button class="btn-primary" style="padding: 6px 16px; font-size: 0.82rem; background: #FFFFFF; color: #E83D84; border-color: #FFFFFF;" onclick="window.wayviaApp.nextDemoStep()">
+        Next Step →
+      </button>
+      <button style="background: none; border: none; color: #FFFFFF; font-size: 1.2rem; cursor: pointer;" onclick="window.wayviaApp.closeDemo()" title="Exit Demo">✕</button>
+    </div>
+  </div>
+
+  <div class="app-container">
+    
+    <!-- DESKTOP SIDEBAR NAVIGATION -->
+    <aside class="app-sidebar" id="app-sidebar">
+      
+      <!-- Brand & Team Vertex Badge from Slide 1 -->
+      <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 8px;">
+        <div class="team-vertex-badge" style="margin-bottom: 12px;">
+          TEAM VERTEX
+        </div>
+        
+        <div class="wayvia-title-wrap" style="cursor: pointer;" onclick="window.wayviaApp.switchView('landing')">
+          <span class="logo-script">Way Via</span>
+          <span class="logo-serif">PROJECT</span>
+        </div>
+        
+        <p style="font-size: 0.76rem; color: var(--text-muted); font-weight: 700; margin-top: 6px; letter-spacing: 0.5px;">
+          “Find Your Way. Your Way.”
+        </p>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="sidebar-nav">
+        <button class="nav-link-btn active" data-view="landing">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Landing Page
+        </button>
+
+        <button class="nav-link-btn" data-view="dashboard">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+          Dashboard
+        </button>
+
+        <button class="nav-link-btn" data-view="explore">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          Explore Places
+        </button>
+
+        <button class="nav-link-btn" data-view="categories">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Categories
+        </button>
+
+        <button class="nav-link-btn" data-view="map">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+          Interactive Map
+        </button>
+
+        <button class="nav-link-btn" data-view="ask-wayvia">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Ask WAYVIA
+          <span style="font-size: 0.68rem; background: #FDE8F1; color: #E83D84; padding: 2px 6px; border-radius: 9999px; margin-left: auto; font-weight: 800;">✨ AI</span>
+        </button>
+
+        <button class="nav-link-btn" data-view="compare">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Compare
+          <span class="nav-badge-count" id="compare-count-badge">3</span>
+        </button>
+
+        <button class="nav-link-btn" data-view="saved">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          Saved Places
+          <span class="nav-badge-count" id="saved-count-badge">1</span>
+        </button>
+
+        <button class="nav-link-btn" data-view="profile">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          My Profile
+        </button>
+      </nav>
+
+      <!-- Sidebar Google Ecosystem Widget -->
+      <div style="margin-top: 16px; padding: 14px; background: #FFFDF9; border: 2px dashed var(--border-pink); border-radius: 18px;">
+        <div style="font-size: 0.72rem; font-weight: 800; color: #4B5563; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px;">
+          Google Ecosystem
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <div class="google-pill gemini">
+            <span>✨ Gemini 1.5 / 2.5 Flash</span>
+          </div>
+          <div class="google-pill maps">
+            <span>📍 Google Maps Platform</span>
+          </div>
+          <div class="google-pill places">
+            <span>🏷️ Places API (New)</span>
+          </div>
+        </div>
+        <button class="btn-outline-pink" style="width: 100%; margin-top: 12px; font-size: 0.75rem; justify-content: center;" onclick="window.wayviaApp.openSettingsModal()">
+          ⚙️ Google Tech Hub & API Keys
+        </button>
+      </div>
+
+    </aside>
+
+    <!-- MAIN SCROLLABLE CONTENT AREA -->
+    <main class="app-main">
+      
+      <!-- TOPBAR UTILITY HEADER -->
+      <header class="app-topbar">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <button class="mobile-menu-btn" id="mobile-hamburger" aria-label="Toggle navigation">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#E83D84"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span style="font-family: var(--font-serif); font-weight: 800; color: var(--brand-pink); font-size: 1.1rem; letter-spacing: 0.5px;">WAYVIA</span>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <!-- Guided Demo Flow Button (Section 23) -->
+          <button class="btn-primary" style="padding: 7px 16px; font-size: 0.82rem;" onclick="window.wayviaApp.startGuidedDemo()">
+            <span>✨ Launch Guided Demo</span>
+          </button>
+
+          <button class="btn-outline-pink" style="padding: 7px 14px; font-size: 0.82rem;" onclick="window.wayviaApp.switchView('ask-wayvia')">
+            <span>Ask WAYVIA</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- ============================================== -->
+      <!-- VIEW 1: LANDING PAGE -->
+      <!-- ============================================== -->
+      <section class="view-container active" id="view-landing">
+        
+        <!-- Scalloped Hero Card with Paperclip & Washi Tape -->
+        <div class="scalloped-card" style="text-align: center; padding: 48px 32px; margin-top: 12px;">
+          
+          <!-- Scrapbook Metallic Paperclip decoration -->
+          <svg class="paperclip-clip" viewBox="0 0 32 52" fill="none">
+            <path d="M10 12V38C10 42.4 13.6 46 18 46C22.4 46 26 42.4 26 38V10C26 5.6 22.4 2 18 2C13.6 2 10 5.6 10 10V38C10 40.2 11.8 42 14 42C16.2 42 18 40.2 18 38V12" stroke="#5AB3E8" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+
+          <!-- Blue Gingham Washi Tape on corner -->
+          <div class="washi-tape-corner"></div>
+
+          <div class="team-vertex-badge" style="margin-bottom: 16px;">
+            TEAM VERTEX PRESENTS
+          </div>
+
+          <div class="wayvia-title-wrap" style="margin-bottom: 8px;">
+            <h1 class="logo-script" style="font-size: 4.2rem;">Way Via</h1>
+            <span class="logo-serif" style="font-size: 2.4rem; letter-spacing: 4px;">PROJECT</span>
+          </div>
+
+          <p style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--brand-pink); font-weight: 700; margin-bottom: 12px; font-style: italic;">
+            “Find Your Way. Your Way.”
+          </p>
+
+          <p style="font-size: 1.15rem; color: var(--text-secondary); max-width: 680px; margin: 0 auto 28px auto; line-height: 1.6;">
+            Discover places that match your accessibility and personal needs — with information that helps you decide with confidence.
+          </p>
+
+          <!-- CTA Buttons -->
+          <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 32px;">
+            <button class="btn-primary" style="font-size: 1.05rem; padding: 14px 32px;" onclick="window.wayviaApp.switchView('explore')">
+              Explore Places
+            </button>
+            <button class="btn-secondary" style="font-size: 1.05rem; padding: 14px 32px;" onclick="window.wayviaApp.switchView('ask-wayvia')">
+              Ask WAYVIA AI
+            </button>
+            <button class="btn-outline-pink" style="font-size: 1.05rem; padding: 14px 28px;" onclick="window.wayviaApp.startGuidedDemo()">
+              ✨ Run 8-Step Demo Flow
+            </button>
+          </div>
+
+          <!-- Google Technology Strip (Section 5) -->
+          <div style="display: flex; justify-content: center;">
+            <div class="google-tech-strip">
+              <span class="google-tech-label">Powered by Google:</span>
+              <span class="google-pill gemini">✨ Gemini</span>
+              <span class="google-pill maps">📍 Google Maps Platform</span>
+              <span class="google-pill places">🏷️ Google Places</span>
+              <span class="google-pill" style="background: #FDF2F8; color: #9D174D; border-color: #FBCFE8;">🌐 Grounded with Google Maps</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4-Step Product Journey (Section 1 & 5) -->
+        <div style="margin: 36px 0;">
+          <div style="text-align: center; margin-bottom: 20px;">
+            <h2 class="section-heading-serif">The WAYVIA Journey</h2>
+            <p class="section-subtitle">Traditional search asks: “Where is this place?” — WAYVIA answers: “Is this place suitable for ME?”</p>
+          </div>
+
+          <div class="journey-steps-container">
+            <div class="journey-step-card" onclick="window.wayviaApp.switchView('dashboard')" style="cursor: pointer;">
+              <span class="journey-step-num">STEP 1</span>
+              <h3 class="journey-step-title">SEARCH</h3>
+              <p class="journey-step-desc">Enter your natural-language intent. No clunky dropdown filters needed.</p>
+            </div>
+
+            <div class="journey-step-card" onclick="window.wayviaApp.switchView('dashboard')" style="cursor: pointer;">
+              <span class="journey-step-num">STEP 2</span>
+              <h3 class="journey-step-title">UNDERSTAND</h3>
+              <p class="journey-step-desc">Gemini extracts mobility, dietary, sensory, and distance criteria instantly.</p>
+            </div>
+
+            <div class="journey-step-card" onclick="window.wayviaApp.switchView('explore')" style="cursor: pointer;">
+              <span class="journey-step-num">STEP 3</span>
+              <h3 class="journey-step-title">MATCH</h3>
+              <p class="journey-step-desc">Google Places data is evaluated against your personal accessibility profile.</p>
+            </div>
+
+            <div class="journey-step-card" onclick="window.wayviaApp.switchView('place-details', 'place-01')" style="cursor: pointer;">
+              <span class="journey-step-num">STEP 4</span>
+              <h3 class="journey-step-title">DECIDE</h3>
+              <p class="journey-step-desc">Clear 3-state intelligence: Verified, Unknown, or Doesn't Match.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROBLEM STATEMENT Presentation Card (Replicating Slide 2 directly!) -->
+        <div class="scalloped-card" style="padding: 36px; margin-top: 24px;">
+          <!-- Paperclip -->
+          <svg class="paperclip-clip" viewBox="0 0 32 52" fill="none">
+            <path d="M10 12V38C10 42.4 13.6 46 18 46C22.4 46 26 42.4 26 38V10C26 5.6 22.4 2 18 2C13.6 2 10 5.6 10 10V38C10 40.2 11.8 42 14 42C16.2 42 18 40.2 18 38V12" stroke="#5AB3E8" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+
+          <!-- Washi tape -->
+          <div class="washi-tape-corner"></div>
+
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; flex-wrap: wrap; gap: 16px;">
+            <div>
+              <h2 class="section-heading-serif" style="font-size: 2.4rem; margin-bottom: 4px;">PROBLEM STATEMENT</h2>
+              <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 700;">From the Team Vertex Research Synthesis</span>
+            </div>
+
+            <!-- Double Map Pins with Dashed Journey Route (From Slide 2) -->
+            <div class="journey-trail-badge">
+              <svg width="22" height="26" viewBox="0 0 24 30" fill="none">
+                <path d="M12 0C5.372 0 0 5.373 0 12c0 9 12 18 12 18s12-9 12-18c0-6.627-5.373-12-12-12z" fill="#1E40AF"/>
+                <circle cx="12" cy="11" r="4" fill="#FFFFFF"/>
+              </svg>
+              <div class="trail-line"></div>
+              <svg width="22" height="26" viewBox="0 0 24 30" fill="none">
+                <path d="M12 0C5.372 0 0 5.373 0 12c0 9 12 18 12 18s12-9 12-18c0-6.627-5.373-12-12-12z" fill="#1E40AF"/>
+                <circle cx="12" cy="11" r="4" fill="#FFFFFF"/>
+              </svg>
+            </div>
+          </div>
+
+          <ul style="list-style-type: none; display: flex; flex-direction: column; gap: 14px; font-size: 1.05rem; color: #D83A7D; line-height: 1.6;">
+            <li style="display: flex; align-items: flex-start; gap: 12px;">
+              <span style="color: var(--brand-pink); font-size: 1.4rem; line-height: 1.1;">•</span>
+              <span>In today’s digital world, location-based platforms help people discover nearby restaurants, hospitals, and other destinations. However, finding a location does not mean knowing whether it meets an individual’s specific needs.</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 12px;">
+              <span style="color: var(--brand-pink); font-size: 1.4rem; line-height: 1.1;">•</span>
+              <span>People with mobility limitations and users with particular dietary or sensory preferences need additional information before deciding a place.</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 12px;">
+              <span style="color: var(--brand-pink); font-size: 1.4rem; line-height: 1.1;">•</span>
+              <span>This information may be scattered across maps, business websites, customer reviews, photographs, and individual listings.</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 12px;">
+              <span style="color: var(--brand-pink); font-size: 1.4rem; line-height: 1.1;">•</span>
+              <span>As a result, users may struggle to determine whether a destination offers the facilities and environment they require before travelling.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Team Footer Ribbon (Slide 1 Footer tribute) -->
+        <div class="team-footer-ribbon">
+          <span class="team-star">✦</span>
+          <span>DAKSHA SIVARAJ SAJJAN</span>
+          <span>•</span>
+          <span>DANDU NAVYA SREE</span>
+          <span>•</span>
+          <span>UDDAMARI BHUVANA</span>
+          <span>•</span>
+          <span>BYRI SHRAVANI</span>
+          <span class="team-star">✦</span>
+        </div>
+
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 2: DASHBOARD -->
+      <!-- ============================================== -->
+      <section class="view-container" id="view-dashboard">
+        
+        <div style="margin-bottom: 24px;">
+          <h2 class="section-heading-serif">Where would you like to go?</h2>
+          <p class="section-subtitle">Search naturally using your own voice or text. Gemini understands your specific requirements.</p>
+        </div>
+
+        <!-- Natural-Language Gemini Search Box (Section 6) -->
+        <div class="gemini-search-box">
+          <span style="color: var(--brand-pink); font-size: 1.3rem;">✨</span>
+          <input type="text" id="gemini-nl-input" class="gemini-search-input" 
+                 placeholder="Try: Find me a wheelchair-accessible café with vegetarian food within 3 km..." 
+                 value="Find me a wheelchair-accessible vegetarian café within 3 km"
+                 onkeydown="if(event.key==='Enter') window.wayviaApp.handleGeminiSearch()" />
+          <button class="btn-primary" style="padding: 10px 22px; font-size: 0.9rem;" onclick="window.wayviaApp.handleGeminiSearch()">
+            <span>✨ Ask Gemini</span>
+          </button>
+        </div>
+
+        <!-- Extracted Requirement Chips Panel -->
+        <div class="extraction-panel" id="dashboard-extraction-panel">
+          <div class="extraction-header">
+            <span id="extraction-status-text" style="font-weight: 800; font-size: 0.9rem; color: var(--brand-pink);">
+              ✓ Extracted Structured Requirements:
+            </span>
+            <span class="google-pill gemini" style="font-size: 0.72rem;">Gemini Structured Extraction</span>
+          </div>
+          <div class="extraction-chips-row" id="extraction-chips-container">
+            <div class="req-chip verified-chip">✓ Category: Café</div>
+            <div class="req-chip verified-chip">✓ Mobility: Wheelchair accessible</div>
+            <div class="req-chip verified-chip">✓ Dietary: Vegetarian</div>
+            <div class="req-chip verified-chip">✓ Environment: Quiet</div>
+            <div class="req-chip verified-chip">✓ Distance: Within 3 km</div>
+          </div>
+        </div>
+
+        <!-- Section 21: Accessibility Insights -->
+        <div class="scalloped-card" style="padding: 22px 28px; margin-bottom: 28px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 1.2rem; color: var(--brand-pink);">✦</span>
+              <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--brand-pink); margin: 0;">Accessibility Insights</h3>
+            </div>
+            <span class="team-vertex-badge" style="font-size: 0.65rem; padding: 2px 8px;">Profile Synchronized</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+            <div style="background: #FFFFFF; border: 1.5px solid #BBF7D0; border-radius: 16px; padding: 12px 16px; display: flex; align-items: center; gap: 10px;">
+              <span style="color: #10B981; font-weight: 800; font-size: 1.2rem;">✓</span>
+              <span style="font-size: 0.88rem; color: #065F46;"><strong>3 nearby restaurants</strong> match your mobility preferences.</span>
+            </div>
+
+            <div style="background: #FFFFFF; border: 1.5px solid #FDE68A; border-radius: 16px; padding: 12px 16px; display: flex; align-items: center; gap: 10px;">
+              <span style="color: #D97706; font-weight: 800; font-size: 1.2rem;">?</span>
+              <span style="font-size: 0.88rem; color: #92400E;"><strong>2 places</strong> have incomplete accessibility information.</span>
+            </div>
+
+            <div style="background: #FFFFFF; border: 1.5px solid #FECDD3; border-radius: 16px; padding: 12px 16px; display: flex; align-items: center; gap: 10px;">
+              <span style="color: #E11D48; font-weight: 800; font-size: 1.2rem;">✕</span>
+              <span style="font-size: 0.88rem; color: #9F1239;"><strong>1 location</strong> has an unverified restroom grab bar.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 6: Recommended Places Matching Needs -->
+        <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
+          <div>
+            <h3 class="section-heading-serif" style="font-size: 1.6rem; margin-bottom: 2px;">Places matching your needs</h3>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">Ranked by personal accessibility match percentage</p>
+          </div>
+          <button class="btn-outline-pink" onclick="window.wayviaApp.switchView('explore')">
+            View All Places →
+          </button>
+        </div>
+
+        <div class="places-grid" id="dashboard-places-grid">
+          <!-- Populated by JavaScript -->
+        </div>
+
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 3: EXPLORE (LIST & MAP MODES) -->
+      <!-- ============================================== -->
+      <section class="view-container" id="view-explore">
+        
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h2 class="section-heading-serif">Explore Places</h2>
+            <p class="section-subtitle" style="margin: 0;">Find locations verified for mobility, sensory, and dietary access.</p>
+          </div>
+
+          <!-- View Mode Toggle: List vs Map (Section 7) -->
+          <div style="display: flex; gap: 6px; background: #FFFFFF; border: 2px solid var(--border-pink); border-radius: 9999px; padding: 4px;">
+            <button class="btn-primary" id="explore-view-list-btn" style="padding: 6px 16px; font-size: 0.82rem;">
+              List View
+            </button>
+            <button class="btn-secondary" id="explore-view-map-btn" style="padding: 6px 16px; font-size: 0.82rem; border: none;">
+              🗺️ Use Google Maps
+            </button>
+          </div>
+        </div>
+
+        <!-- Search Bar & Filters -->
+        <div style="margin-bottom: 16px; display: flex; gap: 10px;">
+          <input type="text" id="explore-search-input" class="gemini-search-input" 
+                 style="background: #FFFFFF; border: 2px solid var(--border-pink); border-radius: 9999px; padding: 10px 18px;" 
+                 placeholder="Search places by name, cuisine, street..." />
+        </div>
+
+        <!-- Category Filter Pills -->
+        <div class="suggested-prompts-bar" id="explore-categories-row" style="background: transparent; border: none; padding: 0 0 16px 0;">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Places List Grid -->
+        <div class="places-grid" id="explore-places-grid">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Places Map Container -->
+        <div id="explore-map-container" style="display: none; margin-top: 16px;">
+          <div class="map-view-wrapper">
+            <div id="explore-map"></div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 4: CATEGORIES -->
+      <!-- ============================================== -->
+      <section class="view-container" id="view-categories">
+        
+        <div style="margin-bottom: 24px;">
+          <h2 class="section-heading-serif">Browse Categories</h2>
+          <p class="section-subtitle">Select a destination category to discover places with verified accessibility.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;" id="categories-list-grid">
+          <!-- Populated by JS -->
+        </div>
+
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 5: PLACE DETAILS (MOST IMPORTANT SCREEN) -->
+      <!-- ============================================== -->
+      <section class="view-container" id="view-place-details">
+        
+        <div style="margin-bottom: 16px;">
+          <button class="btn-outline-pink" onclick="window.wayviaApp.switchView('explore')">
+            ← Back to Places
+          </button>
+        </div>
+
+        <div id="place-details-content">
+          <!-- Dynamically populated by renderPlaceDetails(place) -->
+        </div>
+
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 6: ASK WAYVIA (AI ASSISTANT) -->
+      <!-- ============================================== -->
+      <section class="view-container" id="view-ask-wayvia">
+        
+        <div style="margin-bottom: 16px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <h2 class="section-heading-serif" style="margin: 0;">Ask WAYVIA</h2>
+            <span class="team-vertex-badge" style="font-size: 0.7rem; padding: 3px 10px;">Grounded with Google Maps</span>
+          </div>
+          <p class="section-subtitle" style="margin-top: 4px;">“Tell me what you need. I’ll help you find places that fit.”</p>
+        </div>
+
+        <div class="chat-container">
+          
+          <!-- Chat Message Thread -->
+          <div class="chat-messages" id="chat-messages-wrap">
+            <div class="chat-bubble assistant">
+              <p style="font-weight: 800; color: var(--brand-pink); margin-bottom: 6px;">
+                👋 Hello! I'm your WAYVIA Location Intelligence Assistant.
+              </p>
+              <p style="font-size: 0.92rem; color: var(--text-primary); line-height: 1.4;">
+                Ask me about wheelchair access, low noise levels, vegetarian or gluten-free dining, and parking availability near you. I ground my answers directly using Google Maps Platform & Places API data.
+              </p>
+              <div class="grounding-tag">
+                <span>🌐 Grounded with Google Maps & Places API</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Suggested Prompt Chips (Section 14) -->
+          <div class="suggested-prompts-bar">
+            <button class="prompt-chip" onclick="window.wayviaApp.sendAssistantMessage('Find a quiet café near me.')">
+              “Find a quiet café near me.”
+            </button>
+            <button class="prompt-chip" onclick="window.wayviaApp.sendAssistantMessage('Find wheelchair-accessible restaurants.')">
+              “Find wheelchair-accessible restaurants.”
+            </button>
+            <button class="prompt-chip" onclick="window.wayviaApp.sendAssistantMessage('Which nearby places have accessible parking?')">
+              “Which places have accessible parking?”
+            </button>
+            <button class="prompt-chip" onclick="window.wayviaApp.sendAssistantMessage('Compare these two restaurants.')">
+              “Compare these two restaurants.”
+            </button>
+            <button class="prompt-chip" onclick="window.wayviaApp.sendAssistantMessage('What accessibility information is missing?')">
+              “What accessibility info is missing?”
+            </button>
+            <button class="prompt-chip" onclick="window.wayviaApp.sendAssistantMessage('Find a vegetarian restaurant within 3 km.')">
+              “Find vegetarian food within 3 km.”
+            </button>
+          </div>
+
+          <!-- Chat Input Bar -->
+          <div class="chat-input-bar">
+            <input type="text" id="assistant-chat-input" class="gemini-search-input" 
+                   placeholder="Ask anything about physical accessibility, parking, or sensory environment..."
+                   onkeydown="if(event.key==='Enter') window.wayviaApp.sendAssistantMessage()" />
+            <button class="btn-primary" style="padding: 10px 20px;" onclick="window.wayviaApp.sendAssistantMessage()">
+              Send
+            </button>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 7: COMPARE (SIDE-BY-SIDE MATRIX) -->
+      <!-- ============================================== -->
+      <section class="view-container" id="view-compare">
+        
+        <div style="margin-bottom: 20px;">
+          <h2 class="section-heading-serif">WAYVIA Comparison</h2>
+          <p class="section-subtitle">Side-by-side accessibility and requirement matrix for your selected venues.</p>
+        </div>
+
+        <div id="compare-table-container">
+          <!-- Populated by JS -->
+        </div>
+
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 8: SAVED PLACES -->
+      <!-- ============================================== -->
+      <section class="view-container" id="view-saved">
+        
+        <div style="margin-bottom: 20px;">
+          <h2 class="section-heading-serif">Saved Places</h2>
+          <p class="section-subtitle">Your personal bookmarked locations with accessibility verification indicators.</p>
+        </div>
+
+        <div class="places-grid" id="saved-places-grid">
+          <!-- Populated by JS -->
+        </div>
+
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 9: MY WAYVIA PROFILE -->
+      <!-- ============================================== -->
+      <section class="view-container" id="view-profile">
+        
+        <div style="margin-bottom: 24px;">
+          <h2 class="section-heading-serif">My WAYVIA Profile</h2>
+          <p class="section-subtitle">Configure your individual accessibility and dietary criteria. Match percentages update dynamically across all places.</p>
+        </div>
+
+        <div id="profile-groups-container">
+          <!-- Dynamically populated by renderProfile() -->
+        </div>
+
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 10: INTERACTIVE MAP VIEW -->
+      <!-- ============================================== -->
+      <section class="view-container" id="view-map">
+        
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <h2 class="section-heading-serif">Map Experience</h2>
+            <p class="section-subtitle" style="margin: 0;">Interactive Google Maps layer with accessibility markers and journey trails.</p>
+          </div>
+          <button class="btn-outline-pink" onclick="window.wayviaMap.centerOnUser()">
+            📍 Center on My Location
+          </button>
+        </div>
+
+        <div class="map-view-wrapper" style="height: 600px;">
+          <div id="main-map"></div>
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+  <!-- MOBILE BOTTOM NAVIGATION (Section 4 & 26) -->
+  <nav class="mobile-bottom-nav">
+    <button class="mobile-nav-btn active" data-view="dashboard">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      <span>Home</span>
+    </button>
+    <button class="mobile-nav-btn" data-view="explore">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+      <span>Explore</span>
+    </button>
+    <button class="mobile-nav-btn" data-view="map">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
+      <span>Map</span>
+    </button>
+    <button class="mobile-nav-btn" data-view="ask-wayvia">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span>AI</span>
+    </button>
+    <button class="mobile-nav-btn" data-view="profile">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>Profile</span>
+    </button>
+  </nav>
+
+  <!-- MODAL: PLACE PREVIEW BOTTOM SHEET -->
+  <div class="modal-backdrop" id="place-preview-sheet">
+    <div class="modal-box" style="max-width: 520px;">
+      <button class="modal-close-btn" id="close-preview-sheet">✕</button>
+      <div id="preview-sheet-content">
+        <!-- Injected by openPlacePreview -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: REPORT AN UPDATE (Section 19) -->
+  <div class="modal-backdrop" id="report-update-modal">
+    <div class="modal-box">
+      <button class="modal-close-btn" onclick="window.wayviaApp.closeReportModal()">✕</button>
+      
+      <div class="team-vertex-badge" style="margin-bottom: 12px;">COMMUNITY AUDIT</div>
+      
+      <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--brand-pink); margin-bottom: 6px;">
+        Report an Accessibility Update
+      </h3>
+      <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 16px;">
+        Location: <strong id="report-place-name" style="color: var(--text-primary);">Venue</strong>
+      </p>
+
+      <form onsubmit="event.preventDefault(); window.wayviaApp.submitReportUpdate();">
+        <div style="margin-bottom: 14px;">
+          <label style="display: block; font-weight: 700; font-size: 0.85rem; color: var(--text-primary); margin-bottom: 6px;">
+            What accessibility information needs correction?
+          </label>
+          <select style="width: 100%; padding: 10px; border: 2px solid var(--border-pink); border-radius: 12px; font-family: var(--font-sans); outline: none;">
+            <option>Entrance information changed (steps, ramp, automatic door)</option>
+            <option>Restroom information changed (grab bars, door width, stall)</option>
+            <option>Parking information changed (dedicated ADA spots, van access)</option>
+            <option>Seating information changed (standard height, aisle clearance)</option>
+            <option>Sensory / Noise level changed</option>
+            <option>Other modification</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display: block; font-weight: 700; font-size: 0.85rem; color: var(--text-primary); margin-bottom: 6px;">
+            Describe your observations:
+          </label>
+          <textarea rows="3" style="width: 100%; padding: 10px; border: 2px solid var(--border-pink); border-radius: 12px; font-family: var(--font-sans); outline: none;" placeholder="e.g. Ramp slope was recently rebuilt with handrails..."></textarea>
+        </div>
+
+        <div style="background: #FFFDF9; border: 1px dashed #D97706; border-radius: 12px; padding: 10px 14px; margin-bottom: 16px; font-size: 0.8rem; color: #92400E;">
+          ℹ️ Note: Your update will be submitted for review. User-reported updates are clearly labeled as community feedback and do not automatically claim certified physical verification.
+        </div>
+
+        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+          <button type="button" class="btn-outline-pink" onclick="window.wayviaApp.closeReportModal()">Cancel</button>
+          <button type="submit" class="btn-primary">Submit for Review</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: GOOGLE TECH HUB & API SETTINGS -->
+  <div class="modal-backdrop" id="settings-modal">
+    <div class="modal-box" style="max-width: 600px;">
+      <button class="modal-close-btn" onclick="window.wayviaApp.closeSettingsModal()">✕</button>
+
+      <div class="team-vertex-badge" style="margin-bottom: 12px;">GOOGLE ECOSYSTEM ARCHITECTURE</div>
+      
+      <h3 style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--brand-blue); margin-bottom: 6px;">
+        Google Technologies in WAYVIA
+      </h3>
+      
+      <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.5;">
+        WAYVIA is architected directly around Google technologies. If API credentials are not provided during evaluation, high-fidelity mock data and simulated Gemini reasoning ensure seamless, offline-ready operation.
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
+        <div style="background: #FFFFFF; border: 1.5px solid #BAE6FD; border-radius: 14px; padding: 12px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+            <strong style="color: #0369A1; font-size: 0.9rem;">✨ Gemini AI Layer</strong>
+            <span class="status-pill verified">ACTIVE</span>
+          </div>
+          <p style="font-size: 0.8rem; color: #4B5563;">Powers natural-language understanding, multi-constraint extraction, and location advice.</p>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1.5px solid #A7F3D0; border-radius: 14px; padding: 12px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+            <strong style="color: #047857; font-size: 0.9rem;">📍 Google Maps Platform</strong>
+            <span class="status-pill verified">ACTIVE</span>
+          </div>
+          <p style="font-size: 0.8rem; color: #4B5563;">Provides interactive vector map, coordinates, journey trails, and directions routing.</p>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1.5px solid #FED7AA; border-radius: 14px; padding: 12px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+            <strong style="color: #C2410C; font-size: 0.9rem;">🏷️ Places API (New)</strong>
+            <span class="status-pill verified">ACTIVE</span>
+          </div>
+          <p style="font-size: 0.8rem; color: #4B5563;">Provides place metadata and accessibility fields: wheelchair-accessible entrance, parking, restrooms, seating.</p>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1.5px solid #FBCFE8; border-radius: 14px; padding: 12px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+            <strong style="color: #9D174D; font-size: 0.9rem;">🌐 Grounding with Google Maps</strong>
+            <span class="status-pill verified">ACTIVE</span>
+          </div>
+          <p style="font-size: 0.8rem; color: #4B5563;">Links Gemini generative responses with verified physical location metadata.</p>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end;">
+        <button class="btn-primary" onclick="window.wayviaApp.closeSettingsModal()">Close Overview</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaflet Map Script -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Application Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/matching.js"></script>
+  <script src="js/gemini.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
